@@ -1,0 +1,18 @@
+{
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSaveMode": "modifications",
+    "prettier.printWidth": 120,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "all",
+    "prettier.tabWidth": 2,
+    "editor.rulers": [
+        80,
+        120
+    ]
+}
