@@ -3,17 +3,18 @@ import { safeInstantiateEntity } from '@app/utils/entity.utils';
 import { WebsocketEventToastType, WebsocketEventTostablePort } from '@app/websocket-events/tostable.port';
 import { createZodDto } from 'nestjs-zod';
 import { z } from 'zod';
+import { ExportFileType, mapExportFileTypeToName } from '../enums/export-file-type.enum';
+import { ExportResource, mapExportResourceToName } from '../enums/export-resource.enum';
 
-export default class SyncBankTransactionsWebsocketEvents {
+export default class ExportRecordsWebsocketEvents {
   static Started = class {
-    static readonly eventName =
-      'sync-bank-transactions-started';
+    static readonly eventName = 'export-records-started';
     static readonly EventDataSchema = z.object({
       jobRequestId: z.string(),
       jobExecutionId: z.string(),
       nTotalItems: z.number(),
-      accountName: z.string(),
-      accountNumber: z.string(),
+      resource: z.nativeEnum(ExportResource),
+      fileType: z.nativeEnum(ExportFileType),
     });
     static EventDataEntity = class extends createZodDto(this.EventDataSchema) implements WebsocketEventTostablePort {
       getType(): WebsocketEventToastType {
@@ -21,7 +22,7 @@ export default class SyncBankTransactionsWebsocketEvents {
       }
 
       getTitle(attempt: number): string {
-        let title = `A sincronização das transações bancárias da conta "${this.accountName}" foi iniciada...`;
+        let title = `A exportação de "${mapExportResourceToName(this.resource)}" para um arquivo ${mapExportFileTypeToName(this.fileType)} foi iniciada...`;
         if(attempt > 1) {
           title += ` (tentativa ${attempt})`;
         }
@@ -29,16 +30,16 @@ export default class SyncBankTransactionsWebsocketEvents {
       }
 
       getDescription(): string | undefined {
-        return `Serão sincronizadas ${this.nTotalItems} transações bancárias.`;
+        return `Serão exportados ${this.nTotalItems} registros para um arquivo ${this.fileType}.`;
       }
 
       static build(
         input: z.infer<
-          typeof SyncBankTransactionsWebsocketEvents.Started.EventDataSchema
+          typeof ExportRecordsWebsocketEvents.Started.EventDataSchema
         >,
       ) {
         return safeInstantiateEntity(
-          SyncBankTransactionsWebsocketEvents.Started.EventDataEntity,
+          ExportRecordsWebsocketEvents.Started.EventDataEntity,
           input,
         );
       }
@@ -46,14 +47,13 @@ export default class SyncBankTransactionsWebsocketEvents {
   };
 
   static Progress = class {
-    static readonly eventName =
-      'sync-bank-transactions-progress';
+    static readonly eventName = 'export-records-progress';
     static readonly EventDataSchema = z.object({
       jobRequestId: z.string(),
       jobExecutionId: z.string(),
       nTotalItems: z.number(),
-      accountName: z.string(),
-      accountNumber: z.string(),
+      resource: z.nativeEnum(ExportResource),
+      fileType: z.nativeEnum(ExportFileType),
       nSuccessItems: z.number(),
       nFailedItems: z.number(),
       progress: z.number(),
@@ -64,7 +64,7 @@ export default class SyncBankTransactionsWebsocketEvents {
       }
 
       getTitle(attempt: number): string {
-        let title = `A sincronização das transações bancárias da conta "${this.accountName}" está em progresso...`;
+        let title = `A exportação de "${mapExportResourceToName(this.resource)}" para um arquivo ${mapExportFileTypeToName(this.fileType)} está em progresso...`;
         if(attempt > 1) {
           title += ` (tentativa ${attempt})`;
         }
@@ -72,16 +72,16 @@ export default class SyncBankTransactionsWebsocketEvents {
       }
 
       getDescription(): string | undefined {
-        return `${Math.round(this.progress * 100)}% (${this.nSuccessItems + this.nFailedItems}/${this.nTotalItems}).`;
+        return `${Math.round(this.progress * 100)}% (${this.nSuccessItems + this.nFailedItems}/${this.nTotalItems})`;
       }
 
       static build(
         input: z.infer<
-          typeof SyncBankTransactionsWebsocketEvents.Progress.EventDataSchema
+          typeof ExportRecordsWebsocketEvents.Progress.EventDataSchema
         >,
       ) {
         return safeInstantiateEntity(
-          SyncBankTransactionsWebsocketEvents.Progress.EventDataEntity,
+          ExportRecordsWebsocketEvents.Progress.EventDataEntity,
           input,
         );
       }
@@ -89,19 +89,19 @@ export default class SyncBankTransactionsWebsocketEvents {
   };
 
   static Finished = class {
-    static readonly eventName =
-      'sync-bank-transactions-finished';
+    static readonly eventName = 'export-records-finished';
     static readonly EventDataSchema = z.object({
       jobRequestId: z.string(),
       jobExecutionId: z.string(),
       nTotalItems: z.number(),
-      accountName: z.string(),
-      accountNumber: z.string(),
+      resource: z.nativeEnum(ExportResource),
+      fileType: z.nativeEnum(ExportFileType),
       nSuccessItems: z.number(),
       nFailedItems: z.number(),
       progress: z.number(),
       finishedAt: z.coerce.date(),
       resultStatus: z.nativeEnum(BulkAsyncJobExecutionResultStatus),
+      signedUrl: z.string().nullish(),
     });
     static EventDataEntity = class extends createZodDto(this.EventDataSchema) implements WebsocketEventTostablePort {
       getType(): WebsocketEventToastType {
@@ -109,7 +109,7 @@ export default class SyncBankTransactionsWebsocketEvents {
       }
 
       getTitle(attempt: number): string {
-        let title = `A sincronização das transações bancárias da conta "${this.accountName}" foi finalizada`;
+        let title = `A exportação de "${mapExportResourceToName(this.resource)}" para um arquivo ${mapExportFileTypeToName(this.fileType)} foi finalizada.`;
         if(attempt > 1) {
           title += ` (tentativa ${attempt})`;
         }
@@ -119,31 +119,31 @@ export default class SyncBankTransactionsWebsocketEvents {
       getDescription(): string | undefined {
         switch (this.resultStatus) {
           case BulkAsyncJobExecutionResultStatus.EMPTY:
-            return `Nenhuma transação bancária foi sincronizada.`;
+            return `Nenhum registro foi exportado.`;
           case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED:
-            return `Das ${this.nTotalItems} previstas, todas foram sincronizadas com sucesso.`;
+            return `Dos ${this.nTotalItems} previstos, todos foram exportados com sucesso.`;
           case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_FAILED:
-            return `Das ${this.nTotalItems} previstas, todas falharam.`;
+            return `Dos ${this.nTotalItems} previstos, todas as exportações falharam.`;
           case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED:
-            return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso.`;
+            return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram exportados com sucesso.`;
           case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED:
-            return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso e ${this.nFailedItems} falharam.`;
+            return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
           case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-            return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso e ${this.nFailedItems} falharam.`;
+            return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
           case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-            return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso e ${this.nFailedItems} falharam.`;
+            return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
           case BulkAsyncJobExecutionResultStatus.NO_ITEMS_PROCESSED:
-            return `Nenhuma transação bancária foi sincronizada.`;
+            return `Nenhum registro foi exportado.`;
         }
       }
 
       static build(
         input: z.infer<
-          typeof SyncBankTransactionsWebsocketEvents.Finished.EventDataSchema
+          typeof ExportRecordsWebsocketEvents.Finished.EventDataSchema
         >,
       ) {
         return safeInstantiateEntity(
-          SyncBankTransactionsWebsocketEvents.Finished.EventDataEntity,
+          ExportRecordsWebsocketEvents.Finished.EventDataEntity,
           input,
         );
       }
