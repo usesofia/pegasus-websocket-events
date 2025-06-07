@@ -1,0 +1,42 @@
+{
+  "name": "@usesofia/pegasus-websocket-events",
+  "version": "0.0.1",
+  "description": "Especificação dos esquemas dos eventos do websocket do Pegasus.",
+  "author": "Sofia",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "UNLICENSED",
+  "engines": {
+    "node": "20.x"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+    "lint:fix": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "deploy:check": "pnpm lint:fix && pnpm format"
+  },
+  "dependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "luxon": "^3.6.1",
+    "typescript-eslint": "^8.33.1",
+    "zod": "^3.25.48"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.6.2",
+    "@types/node": "^20.17.57",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
+    "eslint": "^9.28.0",
+    "globals": "^16.2.0",
+    "prettier": "^3.5.3",
+    "tsc-alias": "^1.8.16",
+    "typescript": "5.7.3"
+  }
+}
