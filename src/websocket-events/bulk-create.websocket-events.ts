@@ -3,7 +3,7 @@ import { safeInstantiateEntity } from '@app/utils/entity.utils';
 import { WebsocketEventToastType, WebsocketEventTostablePort } from '@app/websocket-events/tostable.port';
 import { createZodDto } from 'nestjs-zod';
 import { z } from 'zod';
-import { ExportResource, mapExportResourceToName } from '../enums/export-resource.enum';
+import { Resource, mapResourceToName } from '../enums/resource.enum';
 
 export default class BulkCreateWebsocketEvents {
   static Started = class {
@@ -12,7 +12,7 @@ export default class BulkCreateWebsocketEvents {
       jobRequestId: z.string(),
       jobExecutionId: z.string(),
       nTotalItems: z.number(),
-      resource: z.nativeEnum(ExportResource),
+      resource: z.nativeEnum(Resource),
     });
     static EventDataEntity = class extends createZodDto(this.EventDataSchema) implements WebsocketEventTostablePort {
       getType(): WebsocketEventToastType {
@@ -20,7 +20,7 @@ export default class BulkCreateWebsocketEvents {
       }
 
       getTitle(attempt: number): string {
-        let title = `A criação em massa de "${mapExportResourceToName(this.resource)}" foi iniciada...`;
+        let title = `A criação em massa de "${mapResourceToName(this.resource)}" foi iniciada...`;
         if (attempt > 1) {
           title += ` (tentativa ${attempt})`;
         }
@@ -50,7 +50,7 @@ export default class BulkCreateWebsocketEvents {
       jobRequestId: z.string(),
       jobExecutionId: z.string(),
       nTotalItems: z.number(),
-      resource: z.nativeEnum(ExportResource),
+      resource: z.nativeEnum(Resource),
       nSuccessItems: z.number(),
       nFailedItems: z.number(),
       progress: z.number(),
@@ -61,7 +61,7 @@ export default class BulkCreateWebsocketEvents {
       }
 
       getTitle(attempt: number): string {
-        let title = `A criação em massa de "${mapExportResourceToName(this.resource)}" está em progresso...`;
+        let title = `A criação em massa de "${mapResourceToName(this.resource)}" está em progresso...`;
         if (attempt > 1) {
           title += ` (tentativa ${attempt})`;
         }
@@ -91,7 +91,7 @@ export default class BulkCreateWebsocketEvents {
       jobRequestId: z.string(),
       jobExecutionId: z.string(),
       nTotalItems: z.number(),
-      resource: z.nativeEnum(ExportResource),
+      resource: z.nativeEnum(Resource),
       nSuccessItems: z.number(),
       nFailedItems: z.number(),
       progress: z.number(),
@@ -104,7 +104,7 @@ export default class BulkCreateWebsocketEvents {
       }
 
       getTitle(attempt: number): string {
-        let title = `A criação em massa de "${mapExportResourceToName(this.resource)}" foi finalizada.`;
+        let title = `A criação em massa de "${mapResourceToName(this.resource)}" foi finalizada.`;
         if (attempt > 1) {
           title += ` (tentativa ${attempt})`;
         }
@@ -144,4 +144,4 @@ export default class BulkCreateWebsocketEvents {
       }
     };
   };
-} 
+}

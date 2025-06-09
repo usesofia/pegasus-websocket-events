@@ -1,4 +1,4 @@
-export enum ExportResource {
+export enum Resource {
   FINANCIAL_RECORDS = 'FINANCIAL_RECORDS',
   CONTACTS = 'CONTACTS',
   BANK_ACCOUNTS = 'BANK_ACCOUNTS',
@@ -9,23 +9,23 @@ export enum ExportResource {
   SUBCATEGORIES = 'SUBCATEGORIES',
 } 
 
-export function mapExportResourceToName(resource: ExportResource): string {
+export function mapResourceToName(resource: Resource): string {
   switch (resource) {
-    case ExportResource.FINANCIAL_RECORDS:
+    case Resource.FINANCIAL_RECORDS:
       return 'Lançamentos';
-    case ExportResource.CONTACTS:
+    case Resource.CONTACTS:
       return 'Contatos';
-    case ExportResource.BANK_ACCOUNTS:
+    case Resource.BANK_ACCOUNTS:
       return 'Contas Bancárias';
-    case ExportResource.BANK_TRANSACTIONS:
+    case Resource.BANK_TRANSACTIONS:
       return 'Transações Bancárias';
-    case ExportResource.INSTALLMENT_FINANCIAL_RECORDS:
+    case Resource.INSTALLMENT_FINANCIAL_RECORDS:
       return 'Parcelamentos';
-    case ExportResource.RECURRING_FINANCIAL_RECORDS:
+    case Resource.RECURRING_FINANCIAL_RECORDS:
       return 'Recorrências';
-    case ExportResource.TAGS:
+    case Resource.TAGS:
       return 'Tags';
-    case ExportResource.SUBCATEGORIES:
+    case Resource.SUBCATEGORIES:
       return 'Categorias';
   }
 }

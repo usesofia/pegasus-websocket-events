@@ -3,8 +3,8 @@ import { safeInstantiateEntity } from '@app/utils/entity.utils';
 import { WebsocketEventToastType, WebsocketEventTostablePort } from '@app/websocket-events/tostable.port';
 import { createZodDto } from 'nestjs-zod';
 import { z } from 'zod';
-import { ExportFileType, mapExportFileTypeToName } from '../enums/export-file-type.enum';
-import { ExportResource, mapExportResourceToName } from '../enums/export-resource.enum';
+import { FileType, mapFileTypeToName } from '../enums/file-type.enum';
+import { Resource, mapResourceToName } from '../enums/resource.enum';
 
 export default class ExportRecordsWebsocketEvents {
   static Started = class {
@@ -13,8 +13,8 @@ export default class ExportRecordsWebsocketEvents {
       jobRequestId: z.string(),
       jobExecutionId: z.string(),
       nTotalItems: z.number(),
-      resource: z.nativeEnum(ExportResource),
-      fileType: z.nativeEnum(ExportFileType),
+      resource: z.nativeEnum(Resource),
+      fileType: z.nativeEnum(FileType),
     });
     static EventDataEntity = class extends createZodDto(this.EventDataSchema) implements WebsocketEventTostablePort {
       getType(): WebsocketEventToastType {
@@ -22,7 +22,7 @@ export default class ExportRecordsWebsocketEvents {
       }
 
       getTitle(attempt: number): string {
-        let title = `A exportação de "${mapExportResourceToName(this.resource)}" para um arquivo ${mapExportFileTypeToName(this.fileType)} foi iniciada...`;
+        let title = `A exportação de "${mapResourceToName(this.resource)}" para um arquivo ${mapFileTypeToName(this.fileType)} foi iniciada...`;
         if(attempt > 1) {
           title += ` (tentativa ${attempt})`;
         }
@@ -52,8 +52,8 @@ export default class ExportRecordsWebsocketEvents {
       jobRequestId: z.string(),
       jobExecutionId: z.string(),
       nTotalItems: z.number(),
-      resource: z.nativeEnum(ExportResource),
-      fileType: z.nativeEnum(ExportFileType),
+      resource: z.nativeEnum(Resource),
+      fileType: z.nativeEnum(FileType),
       nSuccessItems: z.number(),
       nFailedItems: z.number(),
       progress: z.number(),
@@ -64,7 +64,7 @@ export default class ExportRecordsWebsocketEvents {
       }
 
       getTitle(attempt: number): string {
-        let title = `A exportação de "${mapExportResourceToName(this.resource)}" para um arquivo ${mapExportFileTypeToName(this.fileType)} está em progresso...`;
+        let title = `A exportação de "${mapResourceToName(this.resource)}" para um arquivo ${mapFileTypeToName(this.fileType)} está em progresso...`;
         if(attempt > 1) {
           title += ` (tentativa ${attempt})`;
         }
@@ -94,8 +94,8 @@ export default class ExportRecordsWebsocketEvents {
       jobRequestId: z.string(),
       jobExecutionId: z.string(),
       nTotalItems: z.number(),
-      resource: z.nativeEnum(ExportResource),
-      fileType: z.nativeEnum(ExportFileType),
+      resource: z.nativeEnum(Resource),
+      fileType: z.nativeEnum(FileType),
       nSuccessItems: z.number(),
       nFailedItems: z.number(),
       progress: z.number(),
@@ -109,7 +109,7 @@ export default class ExportRecordsWebsocketEvents {
       }
 
       getTitle(attempt: number): string {
-        let title = `A exportação de "${mapExportResourceToName(this.resource)}" para um arquivo ${mapExportFileTypeToName(this.fileType)} foi finalizada.`;
+        let title = `A exportação de "${mapResourceToName(this.resource)}" para um arquivo ${mapFileTypeToName(this.fileType)} foi finalizada.`;
         if(attempt > 1) {
           title += ` (tentativa ${attempt})`;
         }
