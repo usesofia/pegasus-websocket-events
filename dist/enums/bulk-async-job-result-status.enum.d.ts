@@ -10,3 +10,8 @@ export declare enum BulkAsyncJobExecutionResultStatus {
     NO_ITEMS_PROCESSED = "NO_ITEMS_PROCESSED"
 }
 export declare function mapBulkAsyncJobExecutionResultStatusToToastType(resultStatus: BulkAsyncJobExecutionResultStatus): WebsocketEventToastType;
+export declare function buildBulkAsyncJobExecutionResultStatus({ nTotalItems, nSuccessItems, nFailedItems, }: {
+    nTotalItems: number;
+    nSuccessItems: number;
+    nFailedItems: number;
+}): BulkAsyncJobExecutionResultStatus;
