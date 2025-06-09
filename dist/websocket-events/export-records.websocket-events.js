@@ -5,6 +5,7 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 };
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExportRecordsWebsocketEvents = void 0;
 const bulk_async_job_result_status_enum_1 = require("../enums/bulk-async-job-result-status.enum");
 const entity_utils_1 = require("../utils/entity.utils");
 const tostable_port_1 = require("../websocket-events/tostable.port");
@@ -14,6 +15,7 @@ const file_type_enum_1 = require("../enums/file-type.enum");
 const resource_enum_1 = require("../enums/resource.enum");
 class ExportRecordsWebsocketEvents {
 }
+exports.ExportRecordsWebsocketEvents = ExportRecordsWebsocketEvents;
 ExportRecordsWebsocketEvents.Started = (_a = class {
     },
     __setFunctionName(_a, "Started"),
@@ -130,5 +132,4 @@ ExportRecordsWebsocketEvents.Finished = (_c = class {
         }
     },
     _c);
-exports.default = ExportRecordsWebsocketEvents;
 //# sourceMappingURL=export-records.websocket-events.js.map

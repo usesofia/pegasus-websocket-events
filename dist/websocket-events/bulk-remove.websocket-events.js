@@ -5,6 +5,7 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 };
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.BulkRemoveWebsocketEvents = void 0;
 const bulk_async_job_result_status_enum_1 = require("../enums/bulk-async-job-result-status.enum");
 const entity_utils_1 = require("../utils/entity.utils");
 const tostable_port_1 = require("../websocket-events/tostable.port");
@@ -13,6 +14,7 @@ const zod_1 = require("zod");
 const resource_enum_1 = require("../enums/resource.enum");
 class BulkRemoveWebsocketEvents {
 }
+exports.BulkRemoveWebsocketEvents = BulkRemoveWebsocketEvents;
 BulkRemoveWebsocketEvents.Started = (_a = class {
     },
     __setFunctionName(_a, "Started"),
@@ -125,5 +127,4 @@ BulkRemoveWebsocketEvents.Finished = (_c = class {
         }
     },
     _c);
-exports.default = BulkRemoveWebsocketEvents;
 //# sourceMappingURL=bulk-remove.websocket-events.js.map

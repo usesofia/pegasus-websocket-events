@@ -5,6 +5,7 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 };
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OfxImportWebsocketEvents = void 0;
 const bulk_async_job_result_status_enum_1 = require("../enums/bulk-async-job-result-status.enum");
 const entity_utils_1 = require("../utils/entity.utils");
 const tostable_port_1 = require("../websocket-events/tostable.port");
@@ -12,6 +13,7 @@ const nestjs_zod_1 = require("nestjs-zod");
 const zod_1 = require("zod");
 class OfxImportWebsocketEvents {
 }
+exports.OfxImportWebsocketEvents = OfxImportWebsocketEvents;
 OfxImportWebsocketEvents.Started = (_a = class {
     },
     __setFunctionName(_a, "Started"),
@@ -127,5 +129,4 @@ OfxImportWebsocketEvents.Finished = (_c = class {
         }
     },
     _c);
-exports.default = OfxImportWebsocketEvents;
 //# sourceMappingURL=ofx-import.websocket-events.js.map

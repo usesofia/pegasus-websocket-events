@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { FileType, mapFileTypeToName } from '../enums/file-type.enum';
 import { Resource, mapResourceToName } from '../enums/resource.enum';
 
-export default class ExportRecordsWebsocketEvents {
+export class ExportRecordsWebsocketEvents {
   static Started = class {
     static readonly eventName = 'export-records-started';
     static readonly EventDataSchema = z.object({

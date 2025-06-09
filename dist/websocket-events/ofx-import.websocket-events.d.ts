@@ -1,7 +1,7 @@
 import { BulkAsyncJobExecutionResultStatus } from '../enums/bulk-async-job-result-status.enum';
 import { WebsocketEventToastType } from '../websocket-events/tostable.port';
 import { z } from 'zod';
-export default class OfxImportWebsocketEvents {
+export declare class OfxImportWebsocketEvents {
     static Started: {
         new (): {};
         readonly eventName: "ofx-import-started";

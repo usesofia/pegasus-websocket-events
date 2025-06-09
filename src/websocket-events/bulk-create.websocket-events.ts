@@ -5,7 +5,7 @@ import { createZodDto } from 'nestjs-zod';
 import { z } from 'zod';
 import { Resource, mapResourceToName } from '../enums/resource.enum';
 
-export default class BulkCreateWebsocketEvents {
+export class BulkCreateWebsocketEvents {
   static Started = class {
     static readonly eventName = 'bulk-create-started';
     static readonly EventDataSchema = z.object({

@@ -4,7 +4,7 @@ import { WebsocketEventToastType, WebsocketEventTostablePort } from '@app/websoc
 import { createZodDto } from 'nestjs-zod';
 import { z } from 'zod';
 
-export default class SyncBankTransactionsWebsocketEvents {
+export class SyncBankTransactionsWebsocketEvents {
   static Started = class {
     static readonly eventName =
       'sync-bank-transactions-started';

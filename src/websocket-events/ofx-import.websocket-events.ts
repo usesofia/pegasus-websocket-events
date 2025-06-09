@@ -4,7 +4,7 @@ import { WebsocketEventToastType, WebsocketEventTostablePort } from '@app/websoc
 import { createZodDto } from 'nestjs-zod';
 import { z } from 'zod';
 
-export default class OfxImportWebsocketEvents {
+export class OfxImportWebsocketEvents {
   static Started = class {
     static readonly eventName = 'ofx-import-started';
     static readonly EventDataSchema = z.object({
