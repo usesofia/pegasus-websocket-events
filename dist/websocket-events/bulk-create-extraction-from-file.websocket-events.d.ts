@@ -226,6 +226,7 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             progress: z.ZodNumber;
             finishedAt: z.ZodDate;
             resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
+            csvFileSignedUrl: z.ZodString;
         }, "strip", z.ZodTypeAny, {
             jobRequestId: string;
             url: string;
@@ -239,6 +240,7 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
+            csvFileSignedUrl: string;
         }, {
             jobRequestId: string;
             url: string;
@@ -252,6 +254,7 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
+            csvFileSignedUrl: string;
         }>;
         EventDataEntity: {
             new (): {
@@ -270,6 +273,7 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                csvFileSignedUrl: string;
             };
             build(input: z.infer<typeof BulkCreateExtractionFromFileWebsocketEvents.Finished.EventDataSchema>): {
                 getType(): WebsocketEventToastType;
@@ -287,6 +291,7 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                csvFileSignedUrl: string;
             };
             isZodDto: true;
             schema: z.ZodType<{
@@ -302,6 +307,7 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                csvFileSignedUrl: string;
             }, z.ZodObjectDef<{
                 jobRequestId: z.ZodString;
                 url: z.ZodString;
@@ -315,6 +321,7 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 progress: z.ZodNumber;
                 finishedAt: z.ZodDate;
                 resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
+                csvFileSignedUrl: z.ZodString;
             }, "strip", z.ZodTypeAny>, {
                 jobRequestId: string;
                 url: string;
@@ -328,6 +335,7 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                csvFileSignedUrl: string;
             }>;
             create(input: unknown): {
                 jobRequestId: string;
@@ -342,6 +350,7 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                csvFileSignedUrl: string;
             };
         };
     };

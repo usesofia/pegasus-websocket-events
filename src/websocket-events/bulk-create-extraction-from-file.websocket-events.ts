@@ -106,6 +106,7 @@ export class BulkCreateExtractionFromFileWebsocketEvents {
       progress: z.number(),
       finishedAt: z.coerce.date(),
       resultStatus: z.nativeEnum(BulkAsyncJobExecutionResultStatus),
+      csvFileSignedUrl: z.string(),
     });
     static EventDataEntity = class extends createZodDto(this.EventDataSchema) implements WebsocketEventTostablePort {
       getType(): WebsocketEventToastType {

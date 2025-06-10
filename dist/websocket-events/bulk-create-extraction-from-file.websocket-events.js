@@ -99,6 +99,7 @@ BulkCreateExtractionFromFileWebsocketEvents.Finished = (_c = class {
         progress: zod_1.z.number(),
         finishedAt: zod_1.z.coerce.date(),
         resultStatus: zod_1.z.nativeEnum(bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus),
+        csvFileSignedUrl: zod_1.z.string(),
     }),
     _c.EventDataEntity = class extends (0, nestjs_zod_1.createZodDto)(_c.EventDataSchema) {
         getType() {
