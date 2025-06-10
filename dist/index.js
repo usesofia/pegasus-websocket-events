@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./enums/bulk-async-job-result-status.enum"), exports);
 __exportStar(require("./enums/file-type.enum"), exports);
 __exportStar(require("./enums/resource.enum"), exports);
+__exportStar(require("./websocket-events/bulk-create-extraction-from-file.websocket-events"), exports);
 __exportStar(require("./websocket-events/bulk-create.websocket-events"), exports);
 __exportStar(require("./websocket-events/bulk-remove.websocket-events"), exports);
 __exportStar(require("./websocket-events/export-records.websocket-events"), exports);
