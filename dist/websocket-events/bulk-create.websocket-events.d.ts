@@ -81,18 +81,18 @@ export declare class BulkCreateWebsocketEvents {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
-            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
+            resource: Resource;
         }, {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
-            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
+            resource: Resource;
         }>;
         EventDataEntity: {
             new (): {
@@ -102,10 +102,10 @@ export declare class BulkCreateWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
+                resource: Resource;
             };
             build(input: z.infer<typeof BulkCreateWebsocketEvents.Progress.EventDataSchema>): {
                 getType(): WebsocketEventToastType;
@@ -114,20 +114,20 @@ export declare class BulkCreateWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
+                resource: Resource;
             };
             isZodDto: true;
             schema: z.ZodType<{
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
+                resource: Resource;
             }, z.ZodObjectDef<{
                 jobRequestId: z.ZodString;
                 jobExecutionId: z.ZodString;
@@ -140,19 +140,19 @@ export declare class BulkCreateWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
+                resource: Resource;
             }>;
             create(input: unknown): {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
+                resource: Resource;
             };
         };
     };
@@ -173,22 +173,22 @@ export declare class BulkCreateWebsocketEvents {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
-            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
+            resource: Resource;
         }, {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
-            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
+            resource: Resource;
         }>;
         EventDataEntity: {
             new (): {
@@ -198,12 +198,12 @@ export declare class BulkCreateWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                resource: Resource;
             };
             build(input: z.infer<typeof BulkCreateWebsocketEvents.Finished.EventDataSchema>): {
                 getType(): WebsocketEventToastType;
@@ -212,24 +212,24 @@ export declare class BulkCreateWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                resource: Resource;
             };
             isZodDto: true;
             schema: z.ZodType<{
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                resource: Resource;
             }, z.ZodObjectDef<{
                 jobRequestId: z.ZodString;
                 jobExecutionId: z.ZodString;
@@ -244,23 +244,23 @@ export declare class BulkCreateWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                resource: Resource;
             }>;
             create(input: unknown): {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                resource: Resource;
             };
         };
     };

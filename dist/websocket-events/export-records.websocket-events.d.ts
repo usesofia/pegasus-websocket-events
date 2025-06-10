@@ -92,19 +92,19 @@ export declare class ExportRecordsWebsocketEvents {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
-            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
+            resource: Resource;
             fileType: FileType;
         }, {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
-            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
+            resource: Resource;
             fileType: FileType;
         }>;
         EventDataEntity: {
@@ -115,10 +115,10 @@ export declare class ExportRecordsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
+                resource: Resource;
                 fileType: FileType;
             };
             build(input: z.infer<typeof ExportRecordsWebsocketEvents.Progress.EventDataSchema>): {
@@ -128,10 +128,10 @@ export declare class ExportRecordsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
+                resource: Resource;
                 fileType: FileType;
             };
             isZodDto: true;
@@ -139,10 +139,10 @@ export declare class ExportRecordsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
+                resource: Resource;
                 fileType: FileType;
             }, z.ZodObjectDef<{
                 jobRequestId: z.ZodString;
@@ -157,20 +157,20 @@ export declare class ExportRecordsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
+                resource: Resource;
                 fileType: FileType;
             }>;
             create(input: unknown): {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
+                resource: Resource;
                 fileType: FileType;
             };
         };
@@ -194,24 +194,24 @@ export declare class ExportRecordsWebsocketEvents {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
-            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
+            resource: Resource;
             fileType: FileType;
             signedUrl?: string | null | undefined;
         }, {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
-            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
+            resource: Resource;
             fileType: FileType;
             signedUrl?: string | null | undefined;
         }>;
@@ -223,12 +223,12 @@ export declare class ExportRecordsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                resource: Resource;
                 fileType: FileType;
                 signedUrl?: string | null | undefined;
             };
@@ -239,12 +239,12 @@ export declare class ExportRecordsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                resource: Resource;
                 fileType: FileType;
                 signedUrl?: string | null | undefined;
             };
@@ -253,12 +253,12 @@ export declare class ExportRecordsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                resource: Resource;
                 fileType: FileType;
                 signedUrl?: string | null | undefined;
             }, z.ZodObjectDef<{
@@ -277,12 +277,12 @@ export declare class ExportRecordsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                resource: Resource;
                 fileType: FileType;
                 signedUrl?: string | null | undefined;
             }>;
@@ -290,12 +290,12 @@ export declare class ExportRecordsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
-                resource: Resource;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
+                resource: Resource;
                 fileType: FileType;
                 signedUrl?: string | null | undefined;
             };

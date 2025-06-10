@@ -90,20 +90,20 @@ export declare class SyncBankTransactionsWebsocketEvents {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
+            accountName: string;
+            accountNumber: string;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
-            accountName: string;
-            accountNumber: string;
         }, {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
+            accountName: string;
+            accountNumber: string;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
-            accountName: string;
-            accountNumber: string;
         }>;
         EventDataEntity: {
             new (): {
@@ -113,11 +113,11 @@ export declare class SyncBankTransactionsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
+                accountName: string;
+                accountNumber: string;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
-                accountName: string;
-                accountNumber: string;
             };
             build(input: z.infer<typeof SyncBankTransactionsWebsocketEvents.Progress.EventDataSchema>): {
                 getType(): WebsocketEventToastType;
@@ -126,22 +126,22 @@ export declare class SyncBankTransactionsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
+                accountName: string;
+                accountNumber: string;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
-                accountName: string;
-                accountNumber: string;
             };
             isZodDto: true;
             schema: z.ZodType<{
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
+                accountName: string;
+                accountNumber: string;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
-                accountName: string;
-                accountNumber: string;
             }, z.ZodObjectDef<{
                 jobRequestId: z.ZodString;
                 jobExecutionId: z.ZodString;
@@ -155,21 +155,21 @@ export declare class SyncBankTransactionsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
+                accountName: string;
+                accountNumber: string;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
-                accountName: string;
-                accountNumber: string;
             }>;
             create(input: unknown): {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
+                accountName: string;
+                accountNumber: string;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
-                accountName: string;
-                accountNumber: string;
             };
         };
     };
@@ -191,24 +191,24 @@ export declare class SyncBankTransactionsWebsocketEvents {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
+            accountName: string;
+            accountNumber: string;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
-            accountName: string;
-            accountNumber: string;
         }, {
             jobRequestId: string;
             jobExecutionId: string;
             nTotalItems: number;
+            accountName: string;
+            accountNumber: string;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
-            accountName: string;
-            accountNumber: string;
         }>;
         EventDataEntity: {
             new (): {
@@ -218,13 +218,13 @@ export declare class SyncBankTransactionsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
+                accountName: string;
+                accountNumber: string;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
-                accountName: string;
-                accountNumber: string;
             };
             build(input: z.infer<typeof SyncBankTransactionsWebsocketEvents.Finished.EventDataSchema>): {
                 getType(): WebsocketEventToastType;
@@ -233,26 +233,26 @@ export declare class SyncBankTransactionsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
+                accountName: string;
+                accountNumber: string;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
-                accountName: string;
-                accountNumber: string;
             };
             isZodDto: true;
             schema: z.ZodType<{
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
+                accountName: string;
+                accountNumber: string;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
-                accountName: string;
-                accountNumber: string;
             }, z.ZodObjectDef<{
                 jobRequestId: z.ZodString;
                 jobExecutionId: z.ZodString;
@@ -268,25 +268,25 @@ export declare class SyncBankTransactionsWebsocketEvents {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
+                accountName: string;
+                accountNumber: string;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
-                accountName: string;
-                accountNumber: string;
             }>;
             create(input: unknown): {
                 jobRequestId: string;
                 jobExecutionId: string;
                 nTotalItems: number;
+                accountName: string;
+                accountNumber: string;
                 nSuccessItems: number;
                 nFailedItems: number;
                 progress: number;
                 finishedAt: Date;
                 resultStatus: BulkAsyncJobExecutionResultStatus;
-                accountName: string;
-                accountNumber: string;
             };
         };
     };
