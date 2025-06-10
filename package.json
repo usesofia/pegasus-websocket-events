@@ -1,6 +1,6 @@
 {
   "name": "@usesofia/pegasus-websocket-events",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Especificação dos esquemas dos eventos do websocket do Pegasus.",
   "author": "Sofia",
   "private": false,
@@ -23,14 +23,11 @@
   "dependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.28.0",
-    "@nestjs/common": "^11.1.3",
-    "@nestjs/swagger": "^11.2.0",
     "eslint-config-prettier": "^10.1.5",
     "luxon": "^3.6.1",
-    "nestjs-zod": "^4.3.1",
-    "rxjs": "^7.8.2",
     "typescript-eslint": "^8.33.1",
-    "zod": "^3.25.48"
+    "zod": "^3.25.48",
+    "zod-class": "^0.0.18"
   },
   "devDependencies": {
     "@types/luxon": "^3.6.2",

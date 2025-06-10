@@ -1,11 +1,139 @@
 import { BulkAsyncJobExecutionResultStatus } from '../enums/bulk-async-job-result-status.enum';
-import { WebsocketEventToastType } from '../websocket-events/tostable.port';
+import { WebsocketEventToastType, WebsocketEventTostablePort } from '../websocket-events/tostable.port';
 import { z } from 'zod';
-export declare class OfxImportWebsocketEvents {
-    static Started: {
-        new (): {};
-        readonly eventName: "ofx-import-started";
-        readonly EventDataSchema: z.ZodObject<{
+import { Z } from "zod-class";
+declare const StartedSchema: z.ZodObject<{
+    jobRequestId: z.ZodString;
+    jobExecutionId: z.ZodString;
+    nTotalItems: z.ZodNumber;
+    ofxFileName: z.ZodString;
+    bankAccountName: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    jobRequestId: string;
+    jobExecutionId: string;
+    nTotalItems: number;
+    ofxFileName: string;
+    bankAccountName: string;
+}, {
+    jobRequestId: string;
+    jobExecutionId: string;
+    nTotalItems: number;
+    ofxFileName: string;
+    bankAccountName: string;
+}>;
+declare const StartedEventDataEntity_base: Z.Class<{
+    jobRequestId: z.ZodString;
+    jobExecutionId: z.ZodString;
+    nTotalItems: z.ZodNumber;
+    ofxFileName: z.ZodString;
+    bankAccountName: z.ZodString;
+}>;
+declare class StartedEventDataEntity extends StartedEventDataEntity_base implements WebsocketEventTostablePort {
+    getType(): WebsocketEventToastType;
+    getTitle(attempt: number): string;
+    getDescription(): string | undefined;
+    static build(input: z.infer<typeof StartedSchema>): StartedEventDataEntity;
+}
+declare const ProgressSchema: z.ZodObject<{
+    jobRequestId: z.ZodString;
+    jobExecutionId: z.ZodString;
+    nTotalItems: z.ZodNumber;
+    ofxFileName: z.ZodString;
+    bankAccountName: z.ZodString;
+    nSuccessItems: z.ZodNumber;
+    nFailedItems: z.ZodNumber;
+    progress: z.ZodNumber;
+}, "strip", z.ZodTypeAny, {
+    jobRequestId: string;
+    jobExecutionId: string;
+    nTotalItems: number;
+    nSuccessItems: number;
+    nFailedItems: number;
+    progress: number;
+    ofxFileName: string;
+    bankAccountName: string;
+}, {
+    jobRequestId: string;
+    jobExecutionId: string;
+    nTotalItems: number;
+    nSuccessItems: number;
+    nFailedItems: number;
+    progress: number;
+    ofxFileName: string;
+    bankAccountName: string;
+}>;
+declare const ProgressEventDataEntity_base: Z.Class<{
+    jobRequestId: z.ZodString;
+    jobExecutionId: z.ZodString;
+    nTotalItems: z.ZodNumber;
+    ofxFileName: z.ZodString;
+    bankAccountName: z.ZodString;
+    nSuccessItems: z.ZodNumber;
+    nFailedItems: z.ZodNumber;
+    progress: z.ZodNumber;
+}>;
+declare class ProgressEventDataEntity extends ProgressEventDataEntity_base implements WebsocketEventTostablePort {
+    getType(): WebsocketEventToastType;
+    getTitle(attempt: number): string;
+    getDescription(): string | undefined;
+    static build(input: z.infer<typeof ProgressSchema>): ProgressEventDataEntity;
+}
+declare const FinishedSchema: z.ZodObject<{
+    jobRequestId: z.ZodString;
+    jobExecutionId: z.ZodString;
+    nTotalItems: z.ZodNumber;
+    ofxFileName: z.ZodString;
+    bankAccountName: z.ZodString;
+    nSuccessItems: z.ZodNumber;
+    nFailedItems: z.ZodNumber;
+    progress: z.ZodNumber;
+    finishedAt: z.ZodDate;
+    resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
+}, "strip", z.ZodTypeAny, {
+    jobRequestId: string;
+    jobExecutionId: string;
+    nTotalItems: number;
+    nSuccessItems: number;
+    nFailedItems: number;
+    progress: number;
+    finishedAt: Date;
+    resultStatus: BulkAsyncJobExecutionResultStatus;
+    ofxFileName: string;
+    bankAccountName: string;
+}, {
+    jobRequestId: string;
+    jobExecutionId: string;
+    nTotalItems: number;
+    nSuccessItems: number;
+    nFailedItems: number;
+    progress: number;
+    finishedAt: Date;
+    resultStatus: BulkAsyncJobExecutionResultStatus;
+    ofxFileName: string;
+    bankAccountName: string;
+}>;
+declare const FinishedEventDataEntity_base: Z.Class<{
+    jobRequestId: z.ZodString;
+    jobExecutionId: z.ZodString;
+    nTotalItems: z.ZodNumber;
+    ofxFileName: z.ZodString;
+    bankAccountName: z.ZodString;
+    nSuccessItems: z.ZodNumber;
+    nFailedItems: z.ZodNumber;
+    progress: z.ZodNumber;
+    finishedAt: z.ZodDate;
+    resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
+}>;
+declare class FinishedEventDataEntity extends FinishedEventDataEntity_base implements WebsocketEventTostablePort {
+    getType(): WebsocketEventToastType;
+    getTitle(attempt: number): string;
+    getDescription(): string | undefined;
+    static build(input: z.infer<typeof FinishedSchema>): FinishedEventDataEntity;
+}
+export declare const OfxImportWebsocketEvents: {
+    Started: {
+        eventName: string;
+        EventDataSchema: z.ZodObject<{
             jobRequestId: z.ZodString;
             jobExecutionId: z.ZodString;
             nTotalItems: z.ZodNumber;
@@ -24,60 +152,11 @@ export declare class OfxImportWebsocketEvents {
             ofxFileName: string;
             bankAccountName: string;
         }>;
-        EventDataEntity: {
-            new (): {
-                getType(): WebsocketEventToastType;
-                getTitle(attempt: number): string;
-                getDescription(): string | undefined;
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                ofxFileName: string;
-                bankAccountName: string;
-            };
-            build(input: z.infer<typeof OfxImportWebsocketEvents.Started.EventDataSchema>): {
-                getType(): WebsocketEventToastType;
-                getTitle(attempt: number): string;
-                getDescription(): string | undefined;
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                ofxFileName: string;
-                bankAccountName: string;
-            };
-            isZodDto: true;
-            schema: z.ZodType<{
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                ofxFileName: string;
-                bankAccountName: string;
-            }, z.ZodObjectDef<{
-                jobRequestId: z.ZodString;
-                jobExecutionId: z.ZodString;
-                nTotalItems: z.ZodNumber;
-                ofxFileName: z.ZodString;
-                bankAccountName: z.ZodString;
-            }, "strip", z.ZodTypeAny>, {
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                ofxFileName: string;
-                bankAccountName: string;
-            }>;
-            create(input: unknown): {
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                ofxFileName: string;
-                bankAccountName: string;
-            };
-        };
+        EventDataEntity: typeof StartedEventDataEntity;
     };
-    static Progress: {
-        new (): {};
-        readonly eventName: "ofx-import-progress";
-        readonly EventDataSchema: z.ZodObject<{
+    Progress: {
+        eventName: string;
+        EventDataSchema: z.ZodObject<{
             jobRequestId: z.ZodString;
             jobExecutionId: z.ZodString;
             nTotalItems: z.ZodNumber;
@@ -105,78 +184,11 @@ export declare class OfxImportWebsocketEvents {
             ofxFileName: string;
             bankAccountName: string;
         }>;
-        EventDataEntity: {
-            new (): {
-                getType(): WebsocketEventToastType;
-                getTitle(attempt: number): string;
-                getDescription(): string | undefined;
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                nSuccessItems: number;
-                nFailedItems: number;
-                progress: number;
-                ofxFileName: string;
-                bankAccountName: string;
-            };
-            build(input: z.infer<typeof OfxImportWebsocketEvents.Progress.EventDataSchema>): {
-                getType(): WebsocketEventToastType;
-                getTitle(attempt: number): string;
-                getDescription(): string | undefined;
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                nSuccessItems: number;
-                nFailedItems: number;
-                progress: number;
-                ofxFileName: string;
-                bankAccountName: string;
-            };
-            isZodDto: true;
-            schema: z.ZodType<{
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                nSuccessItems: number;
-                nFailedItems: number;
-                progress: number;
-                ofxFileName: string;
-                bankAccountName: string;
-            }, z.ZodObjectDef<{
-                jobRequestId: z.ZodString;
-                jobExecutionId: z.ZodString;
-                nTotalItems: z.ZodNumber;
-                ofxFileName: z.ZodString;
-                bankAccountName: z.ZodString;
-                nSuccessItems: z.ZodNumber;
-                nFailedItems: z.ZodNumber;
-                progress: z.ZodNumber;
-            }, "strip", z.ZodTypeAny>, {
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                nSuccessItems: number;
-                nFailedItems: number;
-                progress: number;
-                ofxFileName: string;
-                bankAccountName: string;
-            }>;
-            create(input: unknown): {
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                nSuccessItems: number;
-                nFailedItems: number;
-                progress: number;
-                ofxFileName: string;
-                bankAccountName: string;
-            };
-        };
+        EventDataEntity: typeof ProgressEventDataEntity;
     };
-    static Finished: {
-        new (): {};
-        readonly eventName: "ofx-import-finished";
-        readonly EventDataSchema: z.ZodObject<{
+    Finished: {
+        eventName: string;
+        EventDataSchema: z.ZodObject<{
             jobRequestId: z.ZodString;
             jobExecutionId: z.ZodString;
             nTotalItems: z.ZodNumber;
@@ -210,84 +222,7 @@ export declare class OfxImportWebsocketEvents {
             ofxFileName: string;
             bankAccountName: string;
         }>;
-        EventDataEntity: {
-            new (): {
-                getType(): WebsocketEventToastType;
-                getTitle(attempt: number): string;
-                getDescription(): string | undefined;
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                nSuccessItems: number;
-                nFailedItems: number;
-                progress: number;
-                finishedAt: Date;
-                resultStatus: BulkAsyncJobExecutionResultStatus;
-                ofxFileName: string;
-                bankAccountName: string;
-            };
-            build(input: z.infer<typeof OfxImportWebsocketEvents.Finished.EventDataSchema>): {
-                getType(): WebsocketEventToastType;
-                getTitle(attempt: number): string;
-                getDescription(): string | undefined;
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                nSuccessItems: number;
-                nFailedItems: number;
-                progress: number;
-                finishedAt: Date;
-                resultStatus: BulkAsyncJobExecutionResultStatus;
-                ofxFileName: string;
-                bankAccountName: string;
-            };
-            isZodDto: true;
-            schema: z.ZodType<{
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                nSuccessItems: number;
-                nFailedItems: number;
-                progress: number;
-                finishedAt: Date;
-                resultStatus: BulkAsyncJobExecutionResultStatus;
-                ofxFileName: string;
-                bankAccountName: string;
-            }, z.ZodObjectDef<{
-                jobRequestId: z.ZodString;
-                jobExecutionId: z.ZodString;
-                nTotalItems: z.ZodNumber;
-                ofxFileName: z.ZodString;
-                bankAccountName: z.ZodString;
-                nSuccessItems: z.ZodNumber;
-                nFailedItems: z.ZodNumber;
-                progress: z.ZodNumber;
-                finishedAt: z.ZodDate;
-                resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
-            }, "strip", z.ZodTypeAny>, {
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                nSuccessItems: number;
-                nFailedItems: number;
-                progress: number;
-                finishedAt: Date;
-                resultStatus: BulkAsyncJobExecutionResultStatus;
-                ofxFileName: string;
-                bankAccountName: string;
-            }>;
-            create(input: unknown): {
-                jobRequestId: string;
-                jobExecutionId: string;
-                nTotalItems: number;
-                nSuccessItems: number;
-                nFailedItems: number;
-                progress: number;
-                finishedAt: Date;
-                resultStatus: BulkAsyncJobExecutionResultStatus;
-                ofxFileName: string;
-                bankAccountName: string;
-            };
-        };
+        EventDataEntity: typeof FinishedEventDataEntity;
     };
-}
+};
+export {};
