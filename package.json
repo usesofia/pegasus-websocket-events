@@ -1,6 +1,6 @@
 {
   "name": "@usesofia/pegasus-websocket-events",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Especificação dos esquemas dos eventos do websocket do Pegasus.",
   "author": "Sofia",
   "private": false,

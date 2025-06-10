@@ -21,7 +21,6 @@ BulkCreateExtractionFromFileWebsocketEvents.Started = (_a = class {
     _a.eventName = 'bulk-create-extraction-from-file-started',
     _a.EventDataSchema = zod_1.z.object({
         jobRequestId: zod_1.z.string(),
-        jobExecutionId: zod_1.z.string(),
         url: zod_1.z.string(),
         signedUrl: zod_1.z.string(),
         fileName: zod_1.z.string(),
@@ -54,7 +53,6 @@ BulkCreateExtractionFromFileWebsocketEvents.Progress = (_b = class {
     _b.eventName = 'bulk-create-extraction-from-file-progress',
     _b.EventDataSchema = zod_1.z.object({
         jobRequestId: zod_1.z.string(),
-        jobExecutionId: zod_1.z.string(),
         url: zod_1.z.string(),
         signedUrl: zod_1.z.string(),
         fileName: zod_1.z.string(),
@@ -90,7 +88,6 @@ BulkCreateExtractionFromFileWebsocketEvents.Finished = (_c = class {
     _c.eventName = 'bulk-create-extraction-from-file-finished',
     _c.EventDataSchema = zod_1.z.object({
         jobRequestId: zod_1.z.string(),
-        jobExecutionId: zod_1.z.string(),
         url: zod_1.z.string(),
         signedUrl: zod_1.z.string(),
         fileName: zod_1.z.string(),
@@ -145,7 +142,6 @@ BulkCreateExtractionFromFileWebsocketEvents.Failed = (_d = class {
     _d.eventName = 'bulk-create-extraction-from-file-failed',
     _d.EventDataSchema = zod_1.z.object({
         jobRequestId: zod_1.z.string(),
-        jobExecutionId: zod_1.z.string(),
         url: zod_1.z.string(),
         signedUrl: zod_1.z.string(),
         fileName: zod_1.z.string(),

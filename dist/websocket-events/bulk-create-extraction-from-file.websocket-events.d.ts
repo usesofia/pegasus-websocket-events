@@ -8,7 +8,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
         readonly eventName: "bulk-create-extraction-from-file-started";
         readonly EventDataSchema: z.ZodObject<{
             jobRequestId: z.ZodString;
-            jobExecutionId: z.ZodString;
             url: z.ZodString;
             signedUrl: z.ZodString;
             fileName: z.ZodString;
@@ -17,7 +16,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             resource: z.ZodNativeEnum<typeof Resource>;
         }, "strip", z.ZodTypeAny, {
             jobRequestId: string;
-            jobExecutionId: string;
             url: string;
             signedUrl: string;
             fileName: string;
@@ -26,7 +24,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             resource: Resource;
         }, {
             jobRequestId: string;
-            jobExecutionId: string;
             url: string;
             signedUrl: string;
             fileName: string;
@@ -40,7 +37,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 getTitle(attempt: number): string;
                 getDescription(): string | undefined;
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -53,7 +49,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 getTitle(attempt: number): string;
                 getDescription(): string | undefined;
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -64,7 +59,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             isZodDto: true;
             schema: z.ZodType<{
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -73,7 +67,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 resource: Resource;
             }, z.ZodObjectDef<{
                 jobRequestId: z.ZodString;
-                jobExecutionId: z.ZodString;
                 url: z.ZodString;
                 signedUrl: z.ZodString;
                 fileName: z.ZodString;
@@ -82,7 +75,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 resource: z.ZodNativeEnum<typeof Resource>;
             }, "strip", z.ZodTypeAny>, {
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -92,7 +84,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             }>;
             create(input: unknown): {
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -107,7 +98,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
         readonly eventName: "bulk-create-extraction-from-file-progress";
         readonly EventDataSchema: z.ZodObject<{
             jobRequestId: z.ZodString;
-            jobExecutionId: z.ZodString;
             url: z.ZodString;
             signedUrl: z.ZodString;
             fileName: z.ZodString;
@@ -119,7 +109,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             progress: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             jobRequestId: string;
-            jobExecutionId: string;
             url: string;
             signedUrl: string;
             fileName: string;
@@ -131,7 +120,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             progress: number;
         }, {
             jobRequestId: string;
-            jobExecutionId: string;
             url: string;
             signedUrl: string;
             fileName: string;
@@ -148,7 +136,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 getTitle(attempt: number): string;
                 getDescription(): string | undefined;
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -164,7 +151,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 getTitle(attempt: number): string;
                 getDescription(): string | undefined;
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -178,7 +164,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             isZodDto: true;
             schema: z.ZodType<{
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -190,7 +175,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 progress: number;
             }, z.ZodObjectDef<{
                 jobRequestId: z.ZodString;
-                jobExecutionId: z.ZodString;
                 url: z.ZodString;
                 signedUrl: z.ZodString;
                 fileName: z.ZodString;
@@ -202,7 +186,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 progress: z.ZodNumber;
             }, "strip", z.ZodTypeAny>, {
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -215,7 +198,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             }>;
             create(input: unknown): {
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -233,7 +215,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
         readonly eventName: "bulk-create-extraction-from-file-finished";
         readonly EventDataSchema: z.ZodObject<{
             jobRequestId: z.ZodString;
-            jobExecutionId: z.ZodString;
             url: z.ZodString;
             signedUrl: z.ZodString;
             fileName: z.ZodString;
@@ -247,7 +228,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
         }, "strip", z.ZodTypeAny, {
             jobRequestId: string;
-            jobExecutionId: string;
             url: string;
             signedUrl: string;
             fileName: string;
@@ -261,7 +241,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             resultStatus: BulkAsyncJobExecutionResultStatus;
         }, {
             jobRequestId: string;
-            jobExecutionId: string;
             url: string;
             signedUrl: string;
             fileName: string;
@@ -280,7 +259,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 getTitle(attempt: number): string;
                 getDescription(): string | undefined;
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -298,7 +276,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 getTitle(attempt: number): string;
                 getDescription(): string | undefined;
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -314,7 +291,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             isZodDto: true;
             schema: z.ZodType<{
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -328,7 +304,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 resultStatus: BulkAsyncJobExecutionResultStatus;
             }, z.ZodObjectDef<{
                 jobRequestId: z.ZodString;
-                jobExecutionId: z.ZodString;
                 url: z.ZodString;
                 signedUrl: z.ZodString;
                 fileName: z.ZodString;
@@ -342,7 +317,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
             }, "strip", z.ZodTypeAny>, {
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -357,7 +331,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             }>;
             create(input: unknown): {
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -377,7 +350,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
         readonly eventName: "bulk-create-extraction-from-file-failed";
         readonly EventDataSchema: z.ZodObject<{
             jobRequestId: z.ZodString;
-            jobExecutionId: z.ZodString;
             url: z.ZodString;
             signedUrl: z.ZodString;
             fileName: z.ZodString;
@@ -386,7 +358,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             errorMessage: z.ZodString;
         }, "strip", z.ZodTypeAny, {
             jobRequestId: string;
-            jobExecutionId: string;
             url: string;
             signedUrl: string;
             fileName: string;
@@ -395,7 +366,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             errorMessage: string;
         }, {
             jobRequestId: string;
-            jobExecutionId: string;
             url: string;
             signedUrl: string;
             fileName: string;
@@ -409,7 +379,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 getTitle(attempt: number): string;
                 getDescription(): string | undefined;
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -422,7 +391,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 getTitle(attempt: number): string;
                 getDescription(): string | undefined;
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -433,7 +401,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             isZodDto: true;
             schema: z.ZodType<{
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -442,7 +409,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 errorMessage: string;
             }, z.ZodObjectDef<{
                 jobRequestId: z.ZodString;
-                jobExecutionId: z.ZodString;
                 url: z.ZodString;
                 signedUrl: z.ZodString;
                 fileName: z.ZodString;
@@ -451,7 +417,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
                 errorMessage: z.ZodString;
             }, "strip", z.ZodTypeAny>, {
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;
@@ -461,7 +426,6 @@ export declare class BulkCreateExtractionFromFileWebsocketEvents {
             }>;
             create(input: unknown): {
                 jobRequestId: string;
-                jobExecutionId: string;
                 url: string;
                 signedUrl: string;
                 fileName: string;

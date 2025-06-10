@@ -10,7 +10,6 @@ export class BulkCreateExtractionFromFileWebsocketEvents {
     static readonly eventName = 'bulk-create-extraction-from-file-started';
     static readonly EventDataSchema = z.object({
       jobRequestId: z.string(),
-      jobExecutionId: z.string(),
       url: z.string(),
       signedUrl: z.string(),
       fileName: z.string(),
@@ -52,7 +51,6 @@ export class BulkCreateExtractionFromFileWebsocketEvents {
     static readonly eventName = 'bulk-create-extraction-from-file-progress';
     static readonly EventDataSchema = z.object({
       jobRequestId: z.string(),
-      jobExecutionId: z.string(),
       url: z.string(),
       signedUrl: z.string(),
       fileName: z.string(),
@@ -97,7 +95,6 @@ export class BulkCreateExtractionFromFileWebsocketEvents {
     static readonly eventName = 'bulk-create-extraction-from-file-finished';
     static readonly EventDataSchema = z.object({
       jobRequestId: z.string(),
-      jobExecutionId: z.string(),
       url: z.string(),
       signedUrl: z.string(),
       fileName: z.string(),
@@ -161,7 +158,6 @@ export class BulkCreateExtractionFromFileWebsocketEvents {
     static readonly eventName = 'bulk-create-extraction-from-file-failed';
     static readonly EventDataSchema = z.object({
       jobRequestId: z.string(),
-      jobExecutionId: z.string(),
       url: z.string(),
       signedUrl: z.string(),
       fileName: z.string(),
