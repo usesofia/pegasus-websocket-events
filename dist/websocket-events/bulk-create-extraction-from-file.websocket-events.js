@@ -77,6 +77,7 @@ const FinishedSchema = zod_1.z.object({
     finishedAt: zod_1.z.coerce.date(),
     resultStatus: zod_1.z.nativeEnum(bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus),
     csvFileSignedUrl: zod_1.z.string(),
+    fileId: zod_1.z.string(),
 });
 class FinishedEventDataEntity extends zod_class_1.Z.class(FinishedSchema.shape) {
     getType() {

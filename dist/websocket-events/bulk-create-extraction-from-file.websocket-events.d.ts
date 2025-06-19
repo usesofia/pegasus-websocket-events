@@ -13,20 +13,20 @@ declare const StartedSchema: z.ZodObject<{
     resource: z.ZodNativeEnum<typeof Resource>;
 }, "strip", z.ZodTypeAny, {
     jobRequestId: string;
+    url: string;
+    signedUrl: string;
+    fileName: string;
+    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
     nTotalItems: number;
     resource: Resource;
-    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-    signedUrl: string;
-    url: string;
-    fileName: string;
 }, {
     jobRequestId: string;
+    url: string;
+    signedUrl: string;
+    fileName: string;
+    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
     nTotalItems: number;
     resource: Resource;
-    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-    signedUrl: string;
-    url: string;
-    fileName: string;
 }>;
 declare const StartedEventDataEntity_base: Z.Class<{
     jobRequestId: z.ZodString;
@@ -56,26 +56,26 @@ declare const ProgressSchema: z.ZodObject<{
     progress: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
     jobRequestId: string;
+    url: string;
+    signedUrl: string;
+    fileName: string;
+    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
     nTotalItems: number;
+    resource: Resource;
     nSuccessItems: number;
     nFailedItems: number;
     progress: number;
-    resource: Resource;
-    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-    signedUrl: string;
-    url: string;
-    fileName: string;
 }, {
     jobRequestId: string;
+    url: string;
+    signedUrl: string;
+    fileName: string;
+    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
     nTotalItems: number;
+    resource: Resource;
     nSuccessItems: number;
     nFailedItems: number;
     progress: number;
-    resource: Resource;
-    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-    signedUrl: string;
-    url: string;
-    fileName: string;
 }>;
 declare const ProgressEventDataEntity_base: Z.Class<{
     jobRequestId: z.ZodString;
@@ -109,34 +109,37 @@ declare const FinishedSchema: z.ZodObject<{
     finishedAt: z.ZodDate;
     resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
     csvFileSignedUrl: z.ZodString;
+    fileId: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     jobRequestId: string;
+    url: string;
+    signedUrl: string;
+    fileName: string;
+    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
     nTotalItems: number;
+    resource: Resource;
     nSuccessItems: number;
     nFailedItems: number;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
-    resource: Resource;
-    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-    signedUrl: string;
-    url: string;
-    fileName: string;
     csvFileSignedUrl: string;
+    fileId: string;
 }, {
     jobRequestId: string;
+    url: string;
+    signedUrl: string;
+    fileName: string;
+    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
     nTotalItems: number;
+    resource: Resource;
     nSuccessItems: number;
     nFailedItems: number;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
-    resource: Resource;
-    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-    signedUrl: string;
-    url: string;
-    fileName: string;
     csvFileSignedUrl: string;
+    fileId: string;
 }>;
 declare const FinishedEventDataEntity_base: Z.Class<{
     jobRequestId: z.ZodString;
@@ -152,6 +155,7 @@ declare const FinishedEventDataEntity_base: Z.Class<{
     finishedAt: z.ZodDate;
     resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
     csvFileSignedUrl: z.ZodString;
+    fileId: z.ZodString;
 }>;
 declare class FinishedEventDataEntity extends FinishedEventDataEntity_base implements WebsocketEventTostablePort {
     getType(): WebsocketEventToastType;
@@ -169,19 +173,19 @@ declare const FailedSchema: z.ZodObject<{
     errorMessage: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     jobRequestId: string;
-    resource: Resource;
-    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-    signedUrl: string;
     url: string;
+    signedUrl: string;
     fileName: string;
+    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
+    resource: Resource;
     errorMessage: string;
 }, {
     jobRequestId: string;
-    resource: Resource;
-    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-    signedUrl: string;
     url: string;
+    signedUrl: string;
     fileName: string;
+    fileType: "pdf" | "image" | "audio" | "csv" | "excel";
+    resource: Resource;
     errorMessage: string;
 }>;
 declare const FailedEventDataEntity_base: Z.Class<{
@@ -212,20 +216,20 @@ export declare const BulkCreateExtractionFromFileWebsocketEvents: {
             resource: z.ZodNativeEnum<typeof Resource>;
         }, "strip", z.ZodTypeAny, {
             jobRequestId: string;
+            url: string;
+            signedUrl: string;
+            fileName: string;
+            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
             nTotalItems: number;
             resource: Resource;
-            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-            signedUrl: string;
-            url: string;
-            fileName: string;
         }, {
             jobRequestId: string;
+            url: string;
+            signedUrl: string;
+            fileName: string;
+            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
             nTotalItems: number;
             resource: Resource;
-            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-            signedUrl: string;
-            url: string;
-            fileName: string;
         }>;
         EventDataEntity: typeof StartedEventDataEntity;
     };
@@ -244,26 +248,26 @@ export declare const BulkCreateExtractionFromFileWebsocketEvents: {
             progress: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             jobRequestId: string;
+            url: string;
+            signedUrl: string;
+            fileName: string;
+            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
             nTotalItems: number;
+            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
-            resource: Resource;
-            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-            signedUrl: string;
-            url: string;
-            fileName: string;
         }, {
             jobRequestId: string;
+            url: string;
+            signedUrl: string;
+            fileName: string;
+            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
             nTotalItems: number;
+            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
-            resource: Resource;
-            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-            signedUrl: string;
-            url: string;
-            fileName: string;
         }>;
         EventDataEntity: typeof ProgressEventDataEntity;
     };
@@ -283,34 +287,37 @@ export declare const BulkCreateExtractionFromFileWebsocketEvents: {
             finishedAt: z.ZodDate;
             resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
             csvFileSignedUrl: z.ZodString;
+            fileId: z.ZodString;
         }, "strip", z.ZodTypeAny, {
             jobRequestId: string;
+            url: string;
+            signedUrl: string;
+            fileName: string;
+            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
             nTotalItems: number;
+            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
-            resource: Resource;
-            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-            signedUrl: string;
-            url: string;
-            fileName: string;
             csvFileSignedUrl: string;
+            fileId: string;
         }, {
             jobRequestId: string;
+            url: string;
+            signedUrl: string;
+            fileName: string;
+            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
             nTotalItems: number;
+            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
-            resource: Resource;
-            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-            signedUrl: string;
-            url: string;
-            fileName: string;
             csvFileSignedUrl: string;
+            fileId: string;
         }>;
         EventDataEntity: typeof FinishedEventDataEntity;
     };
@@ -326,19 +333,19 @@ export declare const BulkCreateExtractionFromFileWebsocketEvents: {
             errorMessage: z.ZodString;
         }, "strip", z.ZodTypeAny, {
             jobRequestId: string;
-            resource: Resource;
-            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-            signedUrl: string;
             url: string;
+            signedUrl: string;
             fileName: string;
+            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
+            resource: Resource;
             errorMessage: string;
         }, {
             jobRequestId: string;
-            resource: Resource;
-            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
-            signedUrl: string;
             url: string;
+            signedUrl: string;
             fileName: string;
+            fileType: "pdf" | "image" | "audio" | "csv" | "excel";
+            resource: Resource;
             errorMessage: string;
         }>;
         EventDataEntity: typeof FailedEventDataEntity;

@@ -95,6 +95,7 @@ const FinishedSchema = z.object({
   finishedAt: z.coerce.date(),
   resultStatus: z.nativeEnum(BulkAsyncJobExecutionResultStatus),
   csvFileSignedUrl: z.string(),
+  fileId: z.string(),
 });
 
 class FinishedEventDataEntity extends Z.class(FinishedSchema.shape) implements WebsocketEventTostablePort {
