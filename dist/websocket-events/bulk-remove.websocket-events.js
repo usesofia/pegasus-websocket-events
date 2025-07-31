@@ -105,17 +105,17 @@ class FinishedEventDataEntity extends zod_class_1.Z.class(FinishedSchema.shape) 
 }
 exports.BulkRemoveWebsocketEvents = {
     Started: {
-        eventName: 'bulk-remove-started',
+        eventName: "bulk-remove-started",
         EventDataSchema: StartedSchema,
         EventDataEntity: StartedEventDataEntity,
     },
     Progress: {
-        eventName: 'bulk-remove-progress',
+        eventName: "bulk-remove-progress",
         EventDataSchema: ProgressSchema,
         EventDataEntity: ProgressEventDataEntity,
     },
     Finished: {
-        eventName: 'bulk-remove-finished',
+        eventName: "bulk-remove-finished",
         EventDataSchema: FinishedSchema,
         EventDataEntity: FinishedEventDataEntity,
     },

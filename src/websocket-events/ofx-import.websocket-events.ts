@@ -1,6 +1,12 @@
-import { BulkAsyncJobExecutionResultStatus, mapBulkAsyncJobExecutionResultStatusToToastType } from '@app/enums/bulk-async-job-result-status.enum';
-import { WebsocketEventToastType, WebsocketEventTostablePort } from '@app/websocket-events/tostable.port';
-import { z } from 'zod';
+import {
+  BulkAsyncJobExecutionResultStatus,
+  mapBulkAsyncJobExecutionResultStatusToToastType,
+} from "@app/enums/bulk-async-job-result-status.enum";
+import {
+  WebsocketEventToastType,
+  WebsocketEventTostablePort,
+} from "@app/websocket-events/tostable.port";
+import { z } from "zod";
 import { Z } from "zod-class";
 
 // Started
@@ -12,7 +18,10 @@ const StartedSchema = z.object({
   bankAccountName: z.string(),
 });
 
-class StartedEventDataEntity extends Z.class(StartedSchema.shape) implements WebsocketEventTostablePort {
+class StartedEventDataEntity
+  extends Z.class(StartedSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return WebsocketEventToastType.default;
   }
@@ -29,9 +38,7 @@ class StartedEventDataEntity extends Z.class(StartedSchema.shape) implements Web
     return `Serão importadas ${this.nTotalItems} transações.`;
   }
 
-  static build(
-    input: z.infer<typeof StartedSchema>,
-  ) {
+  static build(input: z.infer<typeof StartedSchema>) {
     return new StartedEventDataEntity(input);
   }
 }
@@ -48,7 +55,10 @@ const ProgressSchema = z.object({
   progress: z.number(),
 });
 
-class ProgressEventDataEntity extends Z.class(ProgressSchema.shape) implements WebsocketEventTostablePort {
+class ProgressEventDataEntity
+  extends Z.class(ProgressSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return WebsocketEventToastType.loading;
   }
@@ -65,9 +75,7 @@ class ProgressEventDataEntity extends Z.class(ProgressSchema.shape) implements W
     return `${Math.round(this.progress * 100)}% (${this.nSuccessItems + this.nFailedItems}/${this.nTotalItems})`;
   }
 
-  static build(
-    input: z.infer<typeof ProgressSchema>,
-  ) {
+  static build(input: z.infer<typeof ProgressSchema>) {
     return new ProgressEventDataEntity(input);
   }
 }
@@ -86,7 +94,10 @@ const FinishedSchema = z.object({
   resultStatus: z.nativeEnum(BulkAsyncJobExecutionResultStatus),
 });
 
-class FinishedEventDataEntity extends Z.class(FinishedSchema.shape) implements WebsocketEventTostablePort {
+class FinishedEventDataEntity
+  extends Z.class(FinishedSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return mapBulkAsyncJobExecutionResultStatusToToastType(this.resultStatus);
   }
@@ -120,27 +131,25 @@ class FinishedEventDataEntity extends Z.class(FinishedSchema.shape) implements W
     }
   }
 
-  static build(
-    input: z.infer<typeof FinishedSchema>,
-  ) {
+  static build(input: z.infer<typeof FinishedSchema>) {
     return new FinishedEventDataEntity(input);
   }
 }
 
 export const OfxImportWebsocketEvents = {
   Started: {
-    eventName: 'ofx-import-started',
+    eventName: "ofx-import-started",
     EventDataSchema: StartedSchema,
     EventDataEntity: StartedEventDataEntity,
   },
   Progress: {
-    eventName: 'ofx-import-progress',
+    eventName: "ofx-import-progress",
     EventDataSchema: ProgressSchema,
     EventDataEntity: ProgressEventDataEntity,
   },
   Finished: {
-    eventName: 'ofx-import-finished',
+    eventName: "ofx-import-finished",
     EventDataSchema: FinishedSchema,
     EventDataEntity: FinishedEventDataEntity,
   },
-}; 
+};

@@ -27,7 +27,7 @@ class StartedEventDataEntity
   }
 
   getTitle(attempt: number): string {
-    let title = `A criação em massa de "${mapResourceToName(this.resource)}" foi iniciada...`;
+    let title = `A atualização em massa de "${mapResourceToName(this.resource)}" foi iniciada...`;
     if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
@@ -35,7 +35,7 @@ class StartedEventDataEntity
   }
 
   getDescription(): string | undefined {
-    return `Serão criados ${this.nTotalItems} registros.`;
+    return `Serão atualizados ${this.nTotalItems} registros.`;
   }
 
   static build(input: z.infer<typeof StartedSchema>) {
@@ -63,7 +63,7 @@ class ProgressEventDataEntity
   }
 
   getTitle(attempt: number): string {
-    let title = `A criação em massa de "${mapResourceToName(this.resource)}" está em progresso...`;
+    let title = `A atualização em massa de "${mapResourceToName(this.resource)}" está em progresso...`;
     if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
@@ -101,7 +101,7 @@ class FinishedEventDataEntity
   }
 
   getTitle(attempt: number): string {
-    let title = `A criação em massa de "${mapResourceToName(this.resource)}" foi finalizada.`;
+    let title = `A atualização em massa de "${mapResourceToName(this.resource)}" foi finalizada.`;
     if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
@@ -111,21 +111,21 @@ class FinishedEventDataEntity
   getDescription(): string | undefined {
     switch (this.resultStatus) {
       case BulkAsyncJobExecutionResultStatus.EMPTY:
-        return `Nenhum registro foi criado.`;
+        return `Nenhum registro foi atualizado.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED:
-        return `Dos ${this.nTotalItems} previstos, todos foram criados com sucesso.`;
+        return `Dos ${this.nTotalItems} previstos, todos foram atualizados com sucesso.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_FAILED:
-        return `Dos ${this.nTotalItems} previstos, todas as criações falharam.`;
+        return `Dos ${this.nTotalItems} previstos, todas as atualizações falharam.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED:
-        return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram criados com sucesso.`;
+        return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram atualizados com sucesso.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED:
-        return `Dos ${this.nTotalItems} previstos, ${this.nFailedItems} criações falharam.`; // Corrected message
+        return `Dos ${this.nTotalItems} previstos, ${this.nFailedItems} atualizações falharam.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-        return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram criados com sucesso e ${this.nFailedItems} falharam.`;
+        return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram atualizados com sucesso e ${this.nFailedItems} falharam.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-        return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram criados com sucesso e ${this.nFailedItems} falharam.`;
+        return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram atualizados com sucesso e ${this.nFailedItems} falharam.`;
       case BulkAsyncJobExecutionResultStatus.NO_ITEMS_PROCESSED:
-        return `Nenhum registro foi processado para criação.`;
+        return `Nenhum registro foi processado para atualização.`;
     }
   }
 
@@ -134,19 +134,19 @@ class FinishedEventDataEntity
   }
 }
 
-export const BulkCreateWebsocketEvents = {
+export const BulkUpdateWebsocketEvents = {
   Started: {
-    eventName: "bulk-create-started",
+    eventName: "bulk-update-started",
     EventDataSchema: StartedSchema,
     EventDataEntity: StartedEventDataEntity,
   },
   Progress: {
-    eventName: "bulk-create-progress",
+    eventName: "bulk-update-progress",
     EventDataSchema: ProgressSchema,
     EventDataEntity: ProgressEventDataEntity,
   },
   Finished: {
-    eventName: "bulk-create-finished",
+    eventName: "bulk-update-finished",
     EventDataSchema: FinishedSchema,
     EventDataEntity: FinishedEventDataEntity,
   },

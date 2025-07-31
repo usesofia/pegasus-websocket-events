@@ -1,9 +1,15 @@
-import { BulkAsyncJobExecutionResultStatus, mapBulkAsyncJobExecutionResultStatusToToastType } from '@app/enums/bulk-async-job-result-status.enum';
-import { WebsocketEventToastType, WebsocketEventTostablePort } from '@app/websocket-events/tostable.port';
-import { z } from 'zod';
+import {
+  BulkAsyncJobExecutionResultStatus,
+  mapBulkAsyncJobExecutionResultStatusToToastType,
+} from "@app/enums/bulk-async-job-result-status.enum";
+import {
+  WebsocketEventToastType,
+  WebsocketEventTostablePort,
+} from "@app/websocket-events/tostable.port";
+import { z } from "zod";
 import { Z } from "zod-class";
-import { FileType, mapFileTypeToName } from '../enums/file-type.enum';
-import { Resource, mapResourceToName } from '../enums/resource.enum';
+import { FileType, mapFileTypeToName } from "../enums/file-type.enum";
+import { Resource, mapResourceToName } from "../enums/resource.enum";
 
 // Started
 const StartedSchema = z.object({
@@ -14,14 +20,17 @@ const StartedSchema = z.object({
   fileType: z.nativeEnum(FileType),
 });
 
-class StartedEventDataEntity extends Z.class(StartedSchema.shape) implements WebsocketEventTostablePort {
+class StartedEventDataEntity
+  extends Z.class(StartedSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return WebsocketEventToastType.default;
   }
 
   getTitle(attempt: number): string {
     let title = `A exportação de "${mapResourceToName(this.resource)}" para um arquivo ${mapFileTypeToName(this.fileType)} foi iniciada...`;
-    if(attempt > 1) {
+    if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
     return title;
@@ -31,9 +40,7 @@ class StartedEventDataEntity extends Z.class(StartedSchema.shape) implements Web
     return `Serão exportados ${this.nTotalItems} registros para um arquivo ${this.fileType}.`;
   }
 
-  static build(
-    input: z.infer<typeof StartedSchema>,
-  ) {
+  static build(input: z.infer<typeof StartedSchema>) {
     return new StartedEventDataEntity(input);
   }
 }
@@ -50,14 +57,17 @@ const ProgressSchema = z.object({
   progress: z.number(),
 });
 
-class ProgressEventDataEntity extends Z.class(ProgressSchema.shape) implements WebsocketEventTostablePort {
+class ProgressEventDataEntity
+  extends Z.class(ProgressSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return WebsocketEventToastType.loading;
   }
 
   getTitle(attempt: number): string {
     let title = `A exportação de "${mapResourceToName(this.resource)}" para um arquivo ${mapFileTypeToName(this.fileType)} está em progresso...`;
-    if(attempt > 1) {
+    if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
     return title;
@@ -67,9 +77,7 @@ class ProgressEventDataEntity extends Z.class(ProgressSchema.shape) implements W
     return `${Math.round(this.progress * 100)}% (${this.nSuccessItems + this.nFailedItems}/${this.nTotalItems})`;
   }
 
-  static build(
-    input: z.infer<typeof ProgressSchema>,
-  ) {
+  static build(input: z.infer<typeof ProgressSchema>) {
     return new ProgressEventDataEntity(input);
   }
 }
@@ -89,14 +97,17 @@ const FinishedSchema = z.object({
   signedUrl: z.string().nullish(),
 });
 
-class FinishedEventDataEntity extends Z.class(FinishedSchema.shape) implements WebsocketEventTostablePort {
+class FinishedEventDataEntity
+  extends Z.class(FinishedSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return mapBulkAsyncJobExecutionResultStatusToToastType(this.resultStatus);
   }
 
   getTitle(attempt: number): string {
     let title = `A exportação de "${mapResourceToName(this.resource)}" para um arquivo ${mapFileTypeToName(this.fileType)} foi finalizada.`;
-    if(attempt > 1) {
+    if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
     return title;
@@ -123,26 +134,24 @@ class FinishedEventDataEntity extends Z.class(FinishedSchema.shape) implements W
     }
   }
 
-  static build(
-    input: z.infer<typeof FinishedSchema>,
-  ) {
+  static build(input: z.infer<typeof FinishedSchema>) {
     return new FinishedEventDataEntity(input);
   }
 }
 
 export const ExportRecordsWebsocketEvents = {
   Started: {
-    eventName: 'export-records-started',
+    eventName: "export-records-started",
     EventDataSchema: StartedSchema,
     EventDataEntity: StartedEventDataEntity,
   },
   Progress: {
-    eventName: 'export-records-progress',
+    eventName: "export-records-progress",
     EventDataSchema: ProgressSchema,
     EventDataEntity: ProgressEventDataEntity,
   },
   Finished: {
-    eventName: 'export-records-finished',
+    eventName: "export-records-finished",
     EventDataSchema: FinishedSchema,
     EventDataEntity: FinishedEventDataEntity,
   },

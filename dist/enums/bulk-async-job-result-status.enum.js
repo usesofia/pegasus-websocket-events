@@ -45,23 +45,31 @@ function buildBulkAsyncJobExecutionResultStatus({ nTotalItems, nSuccessItems, nF
     else if (nFailedItems >= nTotalItems && nSuccessItems === 0) {
         return BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_FAILED;
     }
-    else if ((nSuccessItems > 0 && nFailedItems > 0) && (nSuccessItems + nFailedItems >= nTotalItems)) {
+    else if (nSuccessItems > 0 &&
+        nFailedItems > 0 &&
+        nSuccessItems + nFailedItems >= nTotalItems) {
         return BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED;
     }
-    else if ((nSuccessItems > 0 && nFailedItems === 0) && (nSuccessItems + nFailedItems < nTotalItems)) {
+    else if (nSuccessItems > 0 &&
+        nFailedItems === 0 &&
+        nSuccessItems + nFailedItems < nTotalItems) {
         return BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED;
     }
-    else if ((nSuccessItems === 0 && nFailedItems > 0) && (nSuccessItems + nFailedItems < nTotalItems)) {
+    else if (nSuccessItems === 0 &&
+        nFailedItems > 0 &&
+        nSuccessItems + nFailedItems < nTotalItems) {
         return BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED;
     }
-    else if ((nSuccessItems > 0 && nFailedItems > 0) && (nSuccessItems + nFailedItems < nTotalItems)) {
+    else if (nSuccessItems > 0 &&
+        nFailedItems > 0 &&
+        nSuccessItems + nFailedItems < nTotalItems) {
         return BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED;
     }
     else if (nSuccessItems === 0 && nFailedItems === 0) {
         return BulkAsyncJobExecutionResultStatus.NO_ITEMS_PROCESSED;
     }
     else {
-        throw new Error('Unexpected scenario to determine BulkAsyncJobExecutionResultStatus.');
+        throw new Error("Unexpected scenario to determine BulkAsyncJobExecutionResultStatus.");
     }
 }
 //# sourceMappingURL=bulk-async-job-result-status.enum.js.map

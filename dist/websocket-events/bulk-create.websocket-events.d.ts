@@ -1,23 +1,23 @@
-import { BulkAsyncJobExecutionResultStatus } from '../enums/bulk-async-job-result-status.enum';
-import { WebsocketEventToastType, WebsocketEventTostablePort } from '../websocket-events/tostable.port';
-import { z } from 'zod';
+import { BulkAsyncJobExecutionResultStatus } from "../enums/bulk-async-job-result-status.enum";
+import { WebsocketEventToastType, WebsocketEventTostablePort } from "../websocket-events/tostable.port";
+import { z } from "zod";
 import { Z } from "zod-class";
-import { Resource } from '../enums/resource.enum';
+import { Resource } from "../enums/resource.enum";
 declare const StartedSchema: z.ZodObject<{
     jobRequestId: z.ZodString;
     jobExecutionId: z.ZodString;
     nTotalItems: z.ZodNumber;
     resource: z.ZodNativeEnum<typeof Resource>;
 }, "strip", z.ZodTypeAny, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
+    jobRequestId: string;
     resource: Resource;
+    jobExecutionId: string;
 }, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
+    jobRequestId: string;
     resource: Resource;
+    jobExecutionId: string;
 }>;
 declare const StartedEventDataEntity_base: Z.Class<{
     jobRequestId: z.ZodString;
@@ -40,21 +40,21 @@ declare const ProgressSchema: z.ZodObject<{
     nFailedItems: z.ZodNumber;
     progress: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
-    progress: number;
+    jobRequestId: string;
     resource: Resource;
+    progress: number;
+    jobExecutionId: string;
 }, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
-    progress: number;
+    jobRequestId: string;
     resource: Resource;
+    progress: number;
+    jobExecutionId: string;
 }>;
 declare const ProgressEventDataEntity_base: Z.Class<{
     jobRequestId: z.ZodString;
@@ -82,25 +82,25 @@ declare const FinishedSchema: z.ZodObject<{
     finishedAt: z.ZodDate;
     resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
 }, "strip", z.ZodTypeAny, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
+    jobRequestId: string;
+    resource: Resource;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
-    resource: Resource;
+    jobExecutionId: string;
 }, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
+    jobRequestId: string;
+    resource: Resource;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
-    resource: Resource;
+    jobExecutionId: string;
 }>;
 declare const FinishedEventDataEntity_base: Z.Class<{
     jobRequestId: z.ZodString;
@@ -128,15 +128,15 @@ export declare const BulkCreateWebsocketEvents: {
             nTotalItems: z.ZodNumber;
             resource: z.ZodNativeEnum<typeof Resource>;
         }, "strip", z.ZodTypeAny, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
+            jobRequestId: string;
             resource: Resource;
+            jobExecutionId: string;
         }, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
+            jobRequestId: string;
             resource: Resource;
+            jobExecutionId: string;
         }>;
         EventDataEntity: typeof StartedEventDataEntity;
     };
@@ -151,21 +151,21 @@ export declare const BulkCreateWebsocketEvents: {
             nFailedItems: z.ZodNumber;
             progress: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
-            progress: number;
+            jobRequestId: string;
             resource: Resource;
+            progress: number;
+            jobExecutionId: string;
         }, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
-            progress: number;
+            jobRequestId: string;
             resource: Resource;
+            progress: number;
+            jobExecutionId: string;
         }>;
         EventDataEntity: typeof ProgressEventDataEntity;
     };
@@ -182,25 +182,25 @@ export declare const BulkCreateWebsocketEvents: {
             finishedAt: z.ZodDate;
             resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
         }, "strip", z.ZodTypeAny, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
+            jobRequestId: string;
+            resource: Resource;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
-            resource: Resource;
+            jobExecutionId: string;
         }, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
+            jobRequestId: string;
+            resource: Resource;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
-            resource: Resource;
+            jobExecutionId: string;
         }>;
         EventDataEntity: typeof FinishedEventDataEntity;
     };

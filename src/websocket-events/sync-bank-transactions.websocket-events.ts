@@ -1,6 +1,12 @@
-import { BulkAsyncJobExecutionResultStatus, mapBulkAsyncJobExecutionResultStatusToToastType } from '@app/enums/bulk-async-job-result-status.enum';
-import { WebsocketEventToastType, WebsocketEventTostablePort } from '@app/websocket-events/tostable.port';
-import { z } from 'zod';
+import {
+  BulkAsyncJobExecutionResultStatus,
+  mapBulkAsyncJobExecutionResultStatusToToastType,
+} from "@app/enums/bulk-async-job-result-status.enum";
+import {
+  WebsocketEventToastType,
+  WebsocketEventTostablePort,
+} from "@app/websocket-events/tostable.port";
+import { z } from "zod";
 import { Z } from "zod-class";
 
 // Started
@@ -12,14 +18,17 @@ const StartedSchema = z.object({
   accountNumber: z.string(),
 });
 
-class StartedEventDataEntity extends Z.class(StartedSchema.shape) implements WebsocketEventTostablePort {
+class StartedEventDataEntity
+  extends Z.class(StartedSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return WebsocketEventToastType.default;
   }
 
   getTitle(attempt: number): string {
     let title = `A sincronização das transações bancárias da conta "${this.accountName}" foi iniciada...`;
-    if(attempt > 1) {
+    if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
     return title;
@@ -29,9 +38,7 @@ class StartedEventDataEntity extends Z.class(StartedSchema.shape) implements Web
     return `Serão sincronizadas ${this.nTotalItems} transações bancárias.`;
   }
 
-  static build(
-    input: z.infer<typeof StartedSchema>,
-  ) {
+  static build(input: z.infer<typeof StartedSchema>) {
     return new StartedEventDataEntity(input);
   }
 }
@@ -48,14 +55,17 @@ const ProgressSchema = z.object({
   progress: z.number(),
 });
 
-class ProgressEventDataEntity extends Z.class(ProgressSchema.shape) implements WebsocketEventTostablePort {
+class ProgressEventDataEntity
+  extends Z.class(ProgressSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return WebsocketEventToastType.loading;
   }
 
   getTitle(attempt: number): string {
     let title = `A sincronização das transações bancárias da conta "${this.accountName}" está em progresso...`;
-    if(attempt > 1) {
+    if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
     return title;
@@ -65,9 +75,7 @@ class ProgressEventDataEntity extends Z.class(ProgressSchema.shape) implements W
     return `${Math.round(this.progress * 100)}% (${this.nSuccessItems + this.nFailedItems}/${this.nTotalItems}).`;
   }
 
-  static build(
-    input: z.infer<typeof ProgressSchema>,
-  ) {
+  static build(input: z.infer<typeof ProgressSchema>) {
     return new ProgressEventDataEntity(input);
   }
 }
@@ -86,14 +94,17 @@ const FinishedSchema = z.object({
   resultStatus: z.nativeEnum(BulkAsyncJobExecutionResultStatus),
 });
 
-class FinishedEventDataEntity extends Z.class(FinishedSchema.shape) implements WebsocketEventTostablePort {
+class FinishedEventDataEntity
+  extends Z.class(FinishedSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return mapBulkAsyncJobExecutionResultStatusToToastType(this.resultStatus);
   }
 
   getTitle(attempt: number): string {
     let title = `A sincronização das transações bancárias da conta "${this.accountName}" foi finalizada`;
-    if(attempt > 1) {
+    if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
     return title;
@@ -120,26 +131,24 @@ class FinishedEventDataEntity extends Z.class(FinishedSchema.shape) implements W
     }
   }
 
-  static build(
-    input: z.infer<typeof FinishedSchema>,
-  ) {
+  static build(input: z.infer<typeof FinishedSchema>) {
     return new FinishedEventDataEntity(input);
   }
 }
 
 export const SyncBankTransactionsWebsocketEvents = {
   Started: {
-    eventName: 'sync-bank-transactions-started',
+    eventName: "sync-bank-transactions-started",
     EventDataSchema: StartedSchema,
     EventDataEntity: StartedEventDataEntity,
   },
   Progress: {
-    eventName: 'sync-bank-transactions-progress',
+    eventName: "sync-bank-transactions-progress",
     EventDataSchema: ProgressSchema,
     EventDataEntity: ProgressEventDataEntity,
   },
   Finished: {
-    eventName: 'sync-bank-transactions-finished',
+    eventName: "sync-bank-transactions-finished",
     EventDataSchema: FinishedSchema,
     EventDataEntity: FinishedEventDataEntity,
   },

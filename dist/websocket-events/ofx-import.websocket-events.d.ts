@@ -1,6 +1,6 @@
-import { BulkAsyncJobExecutionResultStatus } from '../enums/bulk-async-job-result-status.enum';
-import { WebsocketEventToastType, WebsocketEventTostablePort } from '../websocket-events/tostable.port';
-import { z } from 'zod';
+import { BulkAsyncJobExecutionResultStatus } from "../enums/bulk-async-job-result-status.enum";
+import { WebsocketEventToastType, WebsocketEventTostablePort } from "../websocket-events/tostable.port";
+import { z } from "zod";
 import { Z } from "zod-class";
 declare const StartedSchema: z.ZodObject<{
     jobRequestId: z.ZodString;
@@ -9,15 +9,15 @@ declare const StartedSchema: z.ZodObject<{
     ofxFileName: z.ZodString;
     bankAccountName: z.ZodString;
 }, "strip", z.ZodTypeAny, {
+    nTotalItems: number;
     jobRequestId: string;
     jobExecutionId: string;
-    nTotalItems: number;
     ofxFileName: string;
     bankAccountName: string;
 }, {
+    nTotalItems: number;
     jobRequestId: string;
     jobExecutionId: string;
-    nTotalItems: number;
     ofxFileName: string;
     bankAccountName: string;
 }>;
@@ -44,21 +44,21 @@ declare const ProgressSchema: z.ZodObject<{
     nFailedItems: z.ZodNumber;
     progress: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
+    jobRequestId: string;
     progress: number;
+    jobExecutionId: string;
     ofxFileName: string;
     bankAccountName: string;
 }, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
+    jobRequestId: string;
     progress: number;
+    jobExecutionId: string;
     ofxFileName: string;
     bankAccountName: string;
 }>;
@@ -90,25 +90,25 @@ declare const FinishedSchema: z.ZodObject<{
     finishedAt: z.ZodDate;
     resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
 }, "strip", z.ZodTypeAny, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
+    jobRequestId: string;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
+    jobExecutionId: string;
     ofxFileName: string;
     bankAccountName: string;
 }, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
+    jobRequestId: string;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
+    jobExecutionId: string;
     ofxFileName: string;
     bankAccountName: string;
 }>;
@@ -140,15 +140,15 @@ export declare const OfxImportWebsocketEvents: {
             ofxFileName: z.ZodString;
             bankAccountName: z.ZodString;
         }, "strip", z.ZodTypeAny, {
+            nTotalItems: number;
             jobRequestId: string;
             jobExecutionId: string;
-            nTotalItems: number;
             ofxFileName: string;
             bankAccountName: string;
         }, {
+            nTotalItems: number;
             jobRequestId: string;
             jobExecutionId: string;
-            nTotalItems: number;
             ofxFileName: string;
             bankAccountName: string;
         }>;
@@ -166,21 +166,21 @@ export declare const OfxImportWebsocketEvents: {
             nFailedItems: z.ZodNumber;
             progress: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
+            jobRequestId: string;
             progress: number;
+            jobExecutionId: string;
             ofxFileName: string;
             bankAccountName: string;
         }, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
+            jobRequestId: string;
             progress: number;
+            jobExecutionId: string;
             ofxFileName: string;
             bankAccountName: string;
         }>;
@@ -200,25 +200,25 @@ export declare const OfxImportWebsocketEvents: {
             finishedAt: z.ZodDate;
             resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
         }, "strip", z.ZodTypeAny, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
+            jobRequestId: string;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
+            jobExecutionId: string;
             ofxFileName: string;
             bankAccountName: string;
         }, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
+            jobRequestId: string;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
+            jobExecutionId: string;
             ofxFileName: string;
             bankAccountName: string;
         }>;

@@ -1,17 +1,19 @@
 import { WebsocketEventToastType } from "@app/websocket-events/tostable.port";
 
 export enum BulkAsyncJobExecutionResultStatus {
-  EMPTY = 'EMPTY',
-  PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED = 'PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED',
-  PROCESSED_ALL_ITEMS_AND_ALL_FAILED = 'PROCESSED_ALL_ITEMS_AND_ALL_FAILED',
-  PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED = 'PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED',
-  PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED = 'PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED',
-  PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED = 'PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED',
-  PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED = 'PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED',
-  NO_ITEMS_PROCESSED = 'NO_ITEMS_PROCESSED',
+  EMPTY = "EMPTY",
+  PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED = "PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED",
+  PROCESSED_ALL_ITEMS_AND_ALL_FAILED = "PROCESSED_ALL_ITEMS_AND_ALL_FAILED",
+  PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED = "PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED",
+  PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED = "PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED",
+  PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED = "PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED",
+  PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED = "PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED",
+  NO_ITEMS_PROCESSED = "NO_ITEMS_PROCESSED",
 }
 
-export function mapBulkAsyncJobExecutionResultStatusToToastType(resultStatus: BulkAsyncJobExecutionResultStatus): WebsocketEventToastType {
+export function mapBulkAsyncJobExecutionResultStatusToToastType(
+  resultStatus: BulkAsyncJobExecutionResultStatus,
+): WebsocketEventToastType {
   switch (resultStatus) {
     case BulkAsyncJobExecutionResultStatus.EMPTY:
       return WebsocketEventToastType.default;
@@ -47,17 +49,35 @@ export function buildBulkAsyncJobExecutionResultStatus({
     return BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED;
   } else if (nFailedItems >= nTotalItems && nSuccessItems === 0) {
     return BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_FAILED;
-  } else if ((nSuccessItems > 0 && nFailedItems > 0) && (nSuccessItems + nFailedItems >= nTotalItems)) {
+  } else if (
+    nSuccessItems > 0 &&
+    nFailedItems > 0 &&
+    nSuccessItems + nFailedItems >= nTotalItems
+  ) {
     return BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED;
-  } else if ((nSuccessItems > 0 && nFailedItems === 0) && (nSuccessItems + nFailedItems < nTotalItems)) {
+  } else if (
+    nSuccessItems > 0 &&
+    nFailedItems === 0 &&
+    nSuccessItems + nFailedItems < nTotalItems
+  ) {
     return BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED;
-  } else if ((nSuccessItems === 0 && nFailedItems > 0) && (nSuccessItems + nFailedItems < nTotalItems)) {
+  } else if (
+    nSuccessItems === 0 &&
+    nFailedItems > 0 &&
+    nSuccessItems + nFailedItems < nTotalItems
+  ) {
     return BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED;
-  } else if ((nSuccessItems > 0 && nFailedItems > 0) && (nSuccessItems + nFailedItems < nTotalItems)) {
+  } else if (
+    nSuccessItems > 0 &&
+    nFailedItems > 0 &&
+    nSuccessItems + nFailedItems < nTotalItems
+  ) {
     return BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED;
-  } else if(nSuccessItems === 0 && nFailedItems === 0) {
+  } else if (nSuccessItems === 0 && nFailedItems === 0) {
     return BulkAsyncJobExecutionResultStatus.NO_ITEMS_PROCESSED;
   } else {
-    throw new Error('Unexpected scenario to determine BulkAsyncJobExecutionResultStatus.');
+    throw new Error(
+      "Unexpected scenario to determine BulkAsyncJobExecutionResultStatus.",
+    );
   }
 }

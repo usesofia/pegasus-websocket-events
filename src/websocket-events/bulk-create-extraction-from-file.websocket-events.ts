@@ -1,8 +1,14 @@
-import { BulkAsyncJobExecutionResultStatus, mapBulkAsyncJobExecutionResultStatusToToastType } from '@app/enums/bulk-async-job-result-status.enum';
-import { WebsocketEventToastType, WebsocketEventTostablePort } from '@app/websocket-events/tostable.port';
-import { z } from 'zod';
+import {
+  BulkAsyncJobExecutionResultStatus,
+  mapBulkAsyncJobExecutionResultStatusToToastType,
+} from "@app/enums/bulk-async-job-result-status.enum";
+import {
+  WebsocketEventToastType,
+  WebsocketEventTostablePort,
+} from "@app/websocket-events/tostable.port";
+import { z } from "zod";
 import { Z } from "zod-class";
-import { Resource, mapResourceToName } from '../enums/resource.enum';
+import { Resource, mapResourceToName } from "../enums/resource.enum";
 
 // Started
 const StartedSchema = z.object({
@@ -10,12 +16,15 @@ const StartedSchema = z.object({
   url: z.string(),
   signedUrl: z.string(),
   fileName: z.string(),
-  fileType: z.enum(['pdf', 'image', 'audio', 'csv', 'excel']),
+  fileType: z.enum(["pdf", "image", "audio", "csv", "excel"]),
   nTotalItems: z.number(),
   resource: z.nativeEnum(Resource),
 });
 
-class StartedEventDataEntity extends Z.class(StartedSchema.shape) implements WebsocketEventTostablePort {
+class StartedEventDataEntity
+  extends Z.class(StartedSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return WebsocketEventToastType.default;
   }
@@ -32,11 +41,7 @@ class StartedEventDataEntity extends Z.class(StartedSchema.shape) implements Web
     return `Serão extraídos ${this.nTotalItems} registros.`;
   }
 
-  static build(
-    input: z.infer<
-      typeof StartedSchema
-    >,
-  ) {
+  static build(input: z.infer<typeof StartedSchema>) {
     return new StartedEventDataEntity(input);
   }
 }
@@ -47,14 +52,17 @@ const ProgressSchema = z.object({
   url: z.string(),
   signedUrl: z.string(),
   fileName: z.string(),
-  fileType: z.enum(['pdf', 'image', 'audio', 'csv', 'excel']),
+  fileType: z.enum(["pdf", "image", "audio", "csv", "excel"]),
   nTotalItems: z.number(),
   resource: z.nativeEnum(Resource),
   nSuccessItems: z.number(),
   nFailedItems: z.number(),
   progress: z.number(),
 });
-class ProgressEventDataEntity extends Z.class(ProgressSchema.shape) implements WebsocketEventTostablePort {
+class ProgressEventDataEntity
+  extends Z.class(ProgressSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return WebsocketEventToastType.loading;
   }
@@ -71,11 +79,7 @@ class ProgressEventDataEntity extends Z.class(ProgressSchema.shape) implements W
     return `${Math.round(this.progress * 100)}% (${this.nSuccessItems + this.nFailedItems}/${this.nTotalItems})`;
   }
 
-  static build(
-    input: z.infer<
-      typeof ProgressSchema
-    >,
-  ) {
+  static build(input: z.infer<typeof ProgressSchema>) {
     return new ProgressEventDataEntity(input);
   }
 }
@@ -86,7 +90,7 @@ const FinishedSchema = z.object({
   url: z.string(),
   signedUrl: z.string(),
   fileName: z.string(),
-  fileType: z.enum(['pdf', 'image', 'audio', 'csv', 'excel']),
+  fileType: z.enum(["pdf", "image", "audio", "csv", "excel"]),
   nTotalItems: z.number(),
   resource: z.nativeEnum(Resource),
   nSuccessItems: z.number(),
@@ -98,7 +102,10 @@ const FinishedSchema = z.object({
   fileId: z.string(),
 });
 
-class FinishedEventDataEntity extends Z.class(FinishedSchema.shape) implements WebsocketEventTostablePort {
+class FinishedEventDataEntity
+  extends Z.class(FinishedSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return mapBulkAsyncJobExecutionResultStatusToToastType(this.resultStatus);
   }
@@ -132,11 +139,7 @@ class FinishedEventDataEntity extends Z.class(FinishedSchema.shape) implements W
     }
   }
 
-  static build(
-    input: z.infer<
-      typeof FinishedSchema
-    >,
-  ) {
+  static build(input: z.infer<typeof FinishedSchema>) {
     return new FinishedEventDataEntity(input);
   }
 }
@@ -147,12 +150,15 @@ const FailedSchema = z.object({
   url: z.string(),
   signedUrl: z.string(),
   fileName: z.string(),
-  fileType: z.enum(['pdf', 'image', 'audio', 'csv', 'excel']),
+  fileType: z.enum(["pdf", "image", "audio", "csv", "excel"]),
   resource: z.nativeEnum(Resource),
   errorMessage: z.string(),
 });
 
-class FailedEventDataEntity extends Z.class(FailedSchema.shape) implements WebsocketEventTostablePort {
+class FailedEventDataEntity
+  extends Z.class(FailedSchema.shape)
+  implements WebsocketEventTostablePort
+{
   getType(): WebsocketEventToastType {
     return WebsocketEventToastType.default;
   }
@@ -169,34 +175,30 @@ class FailedEventDataEntity extends Z.class(FailedSchema.shape) implements Webso
     return `${this.errorMessage}`;
   }
 
-  static build(
-    input: z.infer<
-      typeof FailedSchema
-    >,
-  ) {
+  static build(input: z.infer<typeof FailedSchema>) {
     return new FailedEventDataEntity(input);
   }
 }
 
 export const BulkCreateExtractionFromFileWebsocketEvents = {
   Started: {
-    eventName: 'bulk-create-extraction-from-file-started',
+    eventName: "bulk-create-extraction-from-file-started",
     EventDataSchema: StartedSchema,
     EventDataEntity: StartedEventDataEntity,
   },
   Progress: {
-    eventName: 'bulk-create-extraction-from-file-progress',
+    eventName: "bulk-create-extraction-from-file-progress",
     EventDataSchema: ProgressSchema,
     EventDataEntity: ProgressEventDataEntity,
   },
   Finished: {
-    eventName: 'bulk-create-extraction-from-file-finished',
+    eventName: "bulk-create-extraction-from-file-finished",
     EventDataSchema: FinishedSchema,
     EventDataEntity: FinishedEventDataEntity,
   },
   Failed: {
-    eventName: 'bulk-create-extraction-from-file-failed',
+    eventName: "bulk-create-extraction-from-file-failed",
     EventDataSchema: FailedSchema,
     EventDataEntity: FailedEventDataEntity,
   },
-}
+};

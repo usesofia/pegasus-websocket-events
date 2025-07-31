@@ -107,17 +107,17 @@ class FinishedEventDataEntity extends zod_class_1.Z.class(FinishedSchema.shape) 
 }
 exports.OfxImportWebsocketEvents = {
     Started: {
-        eventName: 'ofx-import-started',
+        eventName: "ofx-import-started",
         EventDataSchema: StartedSchema,
         EventDataEntity: StartedEventDataEntity,
     },
     Progress: {
-        eventName: 'ofx-import-progress',
+        eventName: "ofx-import-progress",
         EventDataSchema: ProgressSchema,
         EventDataEntity: ProgressEventDataEntity,
     },
     Finished: {
-        eventName: 'ofx-import-finished',
+        eventName: "ofx-import-finished",
         EventDataSchema: FinishedSchema,
         EventDataEntity: FinishedEventDataEntity,
     },

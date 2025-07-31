@@ -107,17 +107,17 @@ class FinishedEventDataEntity extends zod_class_1.Z.class(FinishedSchema.shape) 
 }
 exports.SyncBankTransactionsWebsocketEvents = {
     Started: {
-        eventName: 'sync-bank-transactions-started',
+        eventName: "sync-bank-transactions-started",
         EventDataSchema: StartedSchema,
         EventDataEntity: StartedEventDataEntity,
     },
     Progress: {
-        eventName: 'sync-bank-transactions-progress',
+        eventName: "sync-bank-transactions-progress",
         EventDataSchema: ProgressSchema,
         EventDataEntity: ProgressEventDataEntity,
     },
     Finished: {
-        eventName: 'sync-bank-transactions-finished',
+        eventName: "sync-bank-transactions-finished",
         EventDataSchema: FinishedSchema,
         EventDataEntity: FinishedEventDataEntity,
     },

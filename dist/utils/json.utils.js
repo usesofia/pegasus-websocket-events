@@ -12,10 +12,10 @@ function getJsonStringifyReplacer() {
                 stack: value.stack,
             };
         }
-        if (typeof value === 'bigint') {
+        if (typeof value === "bigint") {
             return value.toString();
         }
-        if (typeof value === 'object' && value !== null) {
+        if (typeof value === "object" && value !== null) {
             if (seen.has(value)) {
                 return;
             }

@@ -105,17 +105,17 @@ class FinishedEventDataEntity extends zod_class_1.Z.class(FinishedSchema.shape) 
 }
 exports.BulkCreateWebsocketEvents = {
     Started: {
-        eventName: 'bulk-create-started',
+        eventName: "bulk-create-started",
         EventDataSchema: StartedSchema,
         EventDataEntity: StartedEventDataEntity,
     },
     Progress: {
-        eventName: 'bulk-create-progress',
+        eventName: "bulk-create-progress",
         EventDataSchema: ProgressSchema,
         EventDataEntity: ProgressEventDataEntity,
     },
     Finished: {
-        eventName: 'bulk-create-finished',
+        eventName: "bulk-create-finished",
         EventDataSchema: FinishedSchema,
         EventDataEntity: FinishedEventDataEntity,
     },

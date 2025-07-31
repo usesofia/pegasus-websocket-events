@@ -10,9 +10,9 @@ var FileType;
 function mapFileTypeToName(fileType) {
     switch (fileType) {
         case FileType.CSV:
-            return 'csv';
+            return "csv";
         case FileType.EXCEL:
-            return 'excel';
+            return "excel";
     }
 }
 //# sourceMappingURL=file-type.enum.js.map

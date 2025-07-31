@@ -16,21 +16,21 @@ var Resource;
 function mapResourceToName(resource) {
     switch (resource) {
         case Resource.FINANCIAL_RECORDS:
-            return 'Lançamentos';
+            return "Lançamentos";
         case Resource.CONTACTS:
-            return 'Contatos';
+            return "Contatos";
         case Resource.BANK_ACCOUNTS:
-            return 'Contas Bancárias';
+            return "Contas Bancárias";
         case Resource.BANK_TRANSACTIONS:
-            return 'Transações Bancárias';
+            return "Transações Bancárias";
         case Resource.INSTALLMENT_FINANCIAL_RECORDS:
-            return 'Parcelamentos';
+            return "Parcelamentos";
         case Resource.RECURRING_FINANCIAL_RECORDS:
-            return 'Recorrências';
+            return "Recorrências";
         case Resource.TAGS:
-            return 'Tags';
+            return "Tags";
         case Resource.SUBCATEGORIES:
-            return 'Categorias';
+            return "Categorias";
     }
 }
 //# sourceMappingURL=resource.enum.js.map

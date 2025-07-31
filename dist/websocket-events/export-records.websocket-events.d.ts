@@ -1,9 +1,9 @@
-import { BulkAsyncJobExecutionResultStatus } from '../enums/bulk-async-job-result-status.enum';
-import { WebsocketEventToastType, WebsocketEventTostablePort } from '../websocket-events/tostable.port';
-import { z } from 'zod';
+import { BulkAsyncJobExecutionResultStatus } from "../enums/bulk-async-job-result-status.enum";
+import { WebsocketEventToastType, WebsocketEventTostablePort } from "../websocket-events/tostable.port";
+import { z } from "zod";
 import { Z } from "zod-class";
-import { FileType } from '../enums/file-type.enum';
-import { Resource } from '../enums/resource.enum';
+import { FileType } from "../enums/file-type.enum";
+import { Resource } from "../enums/resource.enum";
 declare const StartedSchema: z.ZodObject<{
     jobRequestId: z.ZodString;
     jobExecutionId: z.ZodString;
@@ -11,17 +11,17 @@ declare const StartedSchema: z.ZodObject<{
     resource: z.ZodNativeEnum<typeof Resource>;
     fileType: z.ZodNativeEnum<typeof FileType>;
 }, "strip", z.ZodTypeAny, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
-    resource: Resource;
+    jobRequestId: string;
     fileType: FileType;
+    resource: Resource;
+    jobExecutionId: string;
 }, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
-    resource: Resource;
+    jobRequestId: string;
     fileType: FileType;
+    resource: Resource;
+    jobExecutionId: string;
 }>;
 declare const StartedEventDataEntity_base: Z.Class<{
     jobRequestId: z.ZodString;
@@ -46,23 +46,23 @@ declare const ProgressSchema: z.ZodObject<{
     nFailedItems: z.ZodNumber;
     progress: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
-    progress: number;
-    resource: Resource;
+    jobRequestId: string;
     fileType: FileType;
+    resource: Resource;
+    progress: number;
+    jobExecutionId: string;
 }, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
-    progress: number;
-    resource: Resource;
+    jobRequestId: string;
     fileType: FileType;
+    resource: Resource;
+    progress: number;
+    jobExecutionId: string;
 }>;
 declare const ProgressEventDataEntity_base: Z.Class<{
     jobRequestId: z.ZodString;
@@ -93,28 +93,28 @@ declare const FinishedSchema: z.ZodObject<{
     resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
     signedUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
+    jobRequestId: string;
+    fileType: FileType;
+    resource: Resource;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
-    resource: Resource;
-    fileType: FileType;
+    jobExecutionId: string;
     signedUrl?: string | null | undefined;
 }, {
-    jobRequestId: string;
-    jobExecutionId: string;
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
+    jobRequestId: string;
+    fileType: FileType;
+    resource: Resource;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
-    resource: Resource;
-    fileType: FileType;
+    jobExecutionId: string;
     signedUrl?: string | null | undefined;
 }>;
 declare const FinishedEventDataEntity_base: Z.Class<{
@@ -146,17 +146,17 @@ export declare const ExportRecordsWebsocketEvents: {
             resource: z.ZodNativeEnum<typeof Resource>;
             fileType: z.ZodNativeEnum<typeof FileType>;
         }, "strip", z.ZodTypeAny, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
-            resource: Resource;
+            jobRequestId: string;
             fileType: FileType;
+            resource: Resource;
+            jobExecutionId: string;
         }, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
-            resource: Resource;
+            jobRequestId: string;
             fileType: FileType;
+            resource: Resource;
+            jobExecutionId: string;
         }>;
         EventDataEntity: typeof StartedEventDataEntity;
     };
@@ -172,23 +172,23 @@ export declare const ExportRecordsWebsocketEvents: {
             nFailedItems: z.ZodNumber;
             progress: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
-            progress: number;
-            resource: Resource;
+            jobRequestId: string;
             fileType: FileType;
+            resource: Resource;
+            progress: number;
+            jobExecutionId: string;
         }, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
-            progress: number;
-            resource: Resource;
+            jobRequestId: string;
             fileType: FileType;
+            resource: Resource;
+            progress: number;
+            jobExecutionId: string;
         }>;
         EventDataEntity: typeof ProgressEventDataEntity;
     };
@@ -207,28 +207,28 @@ export declare const ExportRecordsWebsocketEvents: {
             resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
             signedUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         }, "strip", z.ZodTypeAny, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
+            jobRequestId: string;
+            fileType: FileType;
+            resource: Resource;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
-            resource: Resource;
-            fileType: FileType;
+            jobExecutionId: string;
             signedUrl?: string | null | undefined;
         }, {
-            jobRequestId: string;
-            jobExecutionId: string;
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
+            jobRequestId: string;
+            fileType: FileType;
+            resource: Resource;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
-            resource: Resource;
-            fileType: FileType;
+            jobExecutionId: string;
             signedUrl?: string | null | undefined;
         }>;
         EventDataEntity: typeof FinishedEventDataEntity;

@@ -24,4 +24,5 @@ __exportStar(require("./websocket-events/export-records.websocket-events"), expo
 __exportStar(require("./websocket-events/ofx-import.websocket-events"), exports);
 __exportStar(require("./websocket-events/sync-bank-transactions.websocket-events"), exports);
 __exportStar(require("./websocket-events/tostable.port"), exports);
+__exportStar(require("./websocket-events/bulk-update.websocket-events"), exports);
 //# sourceMappingURL=index.js.map

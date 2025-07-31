@@ -2,31 +2,28 @@ import { BulkAsyncJobExecutionResultStatus } from "../enums/bulk-async-job-resul
 import { WebsocketEventToastType, WebsocketEventTostablePort } from "../websocket-events/tostable.port";
 import { z } from "zod";
 import { Z } from "zod-class";
+import { Resource } from "../enums/resource.enum";
 declare const StartedSchema: z.ZodObject<{
     jobRequestId: z.ZodString;
     jobExecutionId: z.ZodString;
     nTotalItems: z.ZodNumber;
-    accountName: z.ZodString;
-    accountNumber: z.ZodString;
+    resource: z.ZodNativeEnum<typeof Resource>;
 }, "strip", z.ZodTypeAny, {
     nTotalItems: number;
     jobRequestId: string;
+    resource: Resource;
     jobExecutionId: string;
-    accountName: string;
-    accountNumber: string;
 }, {
     nTotalItems: number;
     jobRequestId: string;
+    resource: Resource;
     jobExecutionId: string;
-    accountName: string;
-    accountNumber: string;
 }>;
 declare const StartedEventDataEntity_base: Z.Class<{
     jobRequestId: z.ZodString;
     jobExecutionId: z.ZodString;
     nTotalItems: z.ZodNumber;
-    accountName: z.ZodString;
-    accountNumber: z.ZodString;
+    resource: z.ZodNativeEnum<typeof Resource>;
 }>;
 declare class StartedEventDataEntity extends StartedEventDataEntity_base implements WebsocketEventTostablePort {
     getType(): WebsocketEventToastType;
@@ -38,8 +35,7 @@ declare const ProgressSchema: z.ZodObject<{
     jobRequestId: z.ZodString;
     jobExecutionId: z.ZodString;
     nTotalItems: z.ZodNumber;
-    accountName: z.ZodString;
-    accountNumber: z.ZodString;
+    resource: z.ZodNativeEnum<typeof Resource>;
     nSuccessItems: z.ZodNumber;
     nFailedItems: z.ZodNumber;
     progress: z.ZodNumber;
@@ -48,26 +44,23 @@ declare const ProgressSchema: z.ZodObject<{
     nSuccessItems: number;
     nFailedItems: number;
     jobRequestId: string;
+    resource: Resource;
     progress: number;
     jobExecutionId: string;
-    accountName: string;
-    accountNumber: string;
 }, {
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
     jobRequestId: string;
+    resource: Resource;
     progress: number;
     jobExecutionId: string;
-    accountName: string;
-    accountNumber: string;
 }>;
 declare const ProgressEventDataEntity_base: Z.Class<{
     jobRequestId: z.ZodString;
     jobExecutionId: z.ZodString;
     nTotalItems: z.ZodNumber;
-    accountName: z.ZodString;
-    accountNumber: z.ZodString;
+    resource: z.ZodNativeEnum<typeof Resource>;
     nSuccessItems: z.ZodNumber;
     nFailedItems: z.ZodNumber;
     progress: z.ZodNumber;
@@ -82,8 +75,7 @@ declare const FinishedSchema: z.ZodObject<{
     jobRequestId: z.ZodString;
     jobExecutionId: z.ZodString;
     nTotalItems: z.ZodNumber;
-    accountName: z.ZodString;
-    accountNumber: z.ZodString;
+    resource: z.ZodNativeEnum<typeof Resource>;
     nSuccessItems: z.ZodNumber;
     nFailedItems: z.ZodNumber;
     progress: z.ZodNumber;
@@ -94,30 +86,27 @@ declare const FinishedSchema: z.ZodObject<{
     nSuccessItems: number;
     nFailedItems: number;
     jobRequestId: string;
+    resource: Resource;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
     jobExecutionId: string;
-    accountName: string;
-    accountNumber: string;
 }, {
     nTotalItems: number;
     nSuccessItems: number;
     nFailedItems: number;
     jobRequestId: string;
+    resource: Resource;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
     jobExecutionId: string;
-    accountName: string;
-    accountNumber: string;
 }>;
 declare const FinishedEventDataEntity_base: Z.Class<{
     jobRequestId: z.ZodString;
     jobExecutionId: z.ZodString;
     nTotalItems: z.ZodNumber;
-    accountName: z.ZodString;
-    accountNumber: z.ZodString;
+    resource: z.ZodNativeEnum<typeof Resource>;
     nSuccessItems: z.ZodNumber;
     nFailedItems: z.ZodNumber;
     progress: z.ZodNumber;
@@ -130,27 +119,24 @@ declare class FinishedEventDataEntity extends FinishedEventDataEntity_base imple
     getDescription(): string | undefined;
     static build(input: z.infer<typeof FinishedSchema>): FinishedEventDataEntity;
 }
-export declare const SyncBankTransactionsWebsocketEvents: {
+export declare const BulkUpdateWebsocketEvents: {
     Started: {
         eventName: string;
         EventDataSchema: z.ZodObject<{
             jobRequestId: z.ZodString;
             jobExecutionId: z.ZodString;
             nTotalItems: z.ZodNumber;
-            accountName: z.ZodString;
-            accountNumber: z.ZodString;
+            resource: z.ZodNativeEnum<typeof Resource>;
         }, "strip", z.ZodTypeAny, {
             nTotalItems: number;
             jobRequestId: string;
+            resource: Resource;
             jobExecutionId: string;
-            accountName: string;
-            accountNumber: string;
         }, {
             nTotalItems: number;
             jobRequestId: string;
+            resource: Resource;
             jobExecutionId: string;
-            accountName: string;
-            accountNumber: string;
         }>;
         EventDataEntity: typeof StartedEventDataEntity;
     };
@@ -160,8 +146,7 @@ export declare const SyncBankTransactionsWebsocketEvents: {
             jobRequestId: z.ZodString;
             jobExecutionId: z.ZodString;
             nTotalItems: z.ZodNumber;
-            accountName: z.ZodString;
-            accountNumber: z.ZodString;
+            resource: z.ZodNativeEnum<typeof Resource>;
             nSuccessItems: z.ZodNumber;
             nFailedItems: z.ZodNumber;
             progress: z.ZodNumber;
@@ -170,19 +155,17 @@ export declare const SyncBankTransactionsWebsocketEvents: {
             nSuccessItems: number;
             nFailedItems: number;
             jobRequestId: string;
+            resource: Resource;
             progress: number;
             jobExecutionId: string;
-            accountName: string;
-            accountNumber: string;
         }, {
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
             jobRequestId: string;
+            resource: Resource;
             progress: number;
             jobExecutionId: string;
-            accountName: string;
-            accountNumber: string;
         }>;
         EventDataEntity: typeof ProgressEventDataEntity;
     };
@@ -192,8 +175,7 @@ export declare const SyncBankTransactionsWebsocketEvents: {
             jobRequestId: z.ZodString;
             jobExecutionId: z.ZodString;
             nTotalItems: z.ZodNumber;
-            accountName: z.ZodString;
-            accountNumber: z.ZodString;
+            resource: z.ZodNativeEnum<typeof Resource>;
             nSuccessItems: z.ZodNumber;
             nFailedItems: z.ZodNumber;
             progress: z.ZodNumber;
@@ -204,23 +186,21 @@ export declare const SyncBankTransactionsWebsocketEvents: {
             nSuccessItems: number;
             nFailedItems: number;
             jobRequestId: string;
+            resource: Resource;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
             jobExecutionId: string;
-            accountName: string;
-            accountNumber: string;
         }, {
             nTotalItems: number;
             nSuccessItems: number;
             nFailedItems: number;
             jobRequestId: string;
+            resource: Resource;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
             jobExecutionId: string;
-            accountName: string;
-            accountNumber: string;
         }>;
         EventDataEntity: typeof FinishedEventDataEntity;
     };

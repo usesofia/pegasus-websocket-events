@@ -110,17 +110,17 @@ class FinishedEventDataEntity extends zod_class_1.Z.class(FinishedSchema.shape) 
 }
 exports.ExportRecordsWebsocketEvents = {
     Started: {
-        eventName: 'export-records-started',
+        eventName: "export-records-started",
         EventDataSchema: StartedSchema,
         EventDataEntity: StartedEventDataEntity,
     },
     Progress: {
-        eventName: 'export-records-progress',
+        eventName: "export-records-progress",
         EventDataSchema: ProgressSchema,
         EventDataEntity: ProgressEventDataEntity,
     },
     Finished: {
-        eventName: 'export-records-finished',
+        eventName: "export-records-finished",
         EventDataSchema: FinishedSchema,
         EventDataEntity: FinishedEventDataEntity,
     },
