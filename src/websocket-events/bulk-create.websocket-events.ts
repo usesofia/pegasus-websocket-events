@@ -113,17 +113,17 @@ class FinishedEventDataEntity
       case BulkAsyncJobExecutionResultStatus.EMPTY:
         return `Nenhum registro foi criado.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED:
-        return `Dos ${this.nTotalItems} previstos, todos foram criados com sucesso.`;
+        return `Dos ${this.nTotalItems} registros previstos, todos foram criados com sucesso.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_FAILED:
-        return `Dos ${this.nTotalItems} previstos, todas as criações falharam.`;
+        return `Dos ${this.nTotalItems} registros previstos, todas as criações falharam.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED:
-        return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram criados com sucesso.`;
+        return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram criados com sucesso.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED:
-        return `Dos ${this.nTotalItems} previstos, ${this.nFailedItems} criações falharam.`; // Corrected message
+        return `Dos ${this.nTotalItems} registros previstos, ${this.nFailedItems} criações falharam.`; // Corrected message
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-        return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram criados com sucesso e ${this.nFailedItems} falharam.`;
+        return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram criados com sucesso e ${this.nFailedItems} falharam.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-        return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram criados com sucesso e ${this.nFailedItems} falharam.`;
+        return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram criados com sucesso e ${this.nFailedItems} falharam.`;
       case BulkAsyncJobExecutionResultStatus.NO_ITEMS_PROCESSED:
         return `Nenhum registro foi processado para criação.`;
     }
