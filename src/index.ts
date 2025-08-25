@@ -6,9 +6,11 @@ export * from "./enums/resource.enum";
 // Websocket Events
 export * from "./websocket-events/bulk-create-extraction-from-file.websocket-events";
 export * from "./websocket-events/bulk-create.websocket-events";
+export * from "./websocket-events/bulk-operation-for-bank-transactions.websocket-events";
 export * from "./websocket-events/bulk-remove.websocket-events";
+export * from "./websocket-events/bulk-update.websocket-events";
 export * from "./websocket-events/export-records.websocket-events";
 export * from "./websocket-events/ofx-import.websocket-events";
 export * from "./websocket-events/sync-bank-transactions.websocket-events";
 export * from "./websocket-events/tostable.port";
-export * from "./websocket-events/bulk-update.websocket-events";
+
