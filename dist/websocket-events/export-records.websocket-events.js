@@ -89,17 +89,17 @@ class FinishedEventDataEntity extends zod_class_1.Z.class(FinishedSchema.shape) 
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.EMPTY:
                 return `Nenhum registro foi exportado.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED:
-                return `Dos ${this.nTotalItems} previstos, todos foram exportados com sucesso.`;
+                return `Dos ${this.nTotalItems} registros previstos, todos foram exportados com sucesso.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_FAILED:
-                return `Dos ${this.nTotalItems} previstos, todas as exportações falharam.`;
+                return `Dos ${this.nTotalItems} registros previstos, todas as exportações falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED:
-                return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram exportados com sucesso.`;
+                return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram exportados com sucesso.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED:
-                return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
+                return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-                return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
+                return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-                return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
+                return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.NO_ITEMS_PROCESSED:
                 return `Nenhum registro foi exportado.`;
         }

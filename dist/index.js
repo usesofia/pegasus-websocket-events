@@ -19,10 +19,11 @@ __exportStar(require("./enums/file-type.enum"), exports);
 __exportStar(require("./enums/resource.enum"), exports);
 __exportStar(require("./websocket-events/bulk-create-extraction-from-file.websocket-events"), exports);
 __exportStar(require("./websocket-events/bulk-create.websocket-events"), exports);
+__exportStar(require("./websocket-events/bulk-operation-for-bank-transactions.websocket-events"), exports);
 __exportStar(require("./websocket-events/bulk-remove.websocket-events"), exports);
+__exportStar(require("./websocket-events/bulk-update.websocket-events"), exports);
 __exportStar(require("./websocket-events/export-records.websocket-events"), exports);
 __exportStar(require("./websocket-events/ofx-import.websocket-events"), exports);
 __exportStar(require("./websocket-events/sync-bank-transactions.websocket-events"), exports);
 __exportStar(require("./websocket-events/tostable.port"), exports);
-__exportStar(require("./websocket-events/bulk-update.websocket-events"), exports);
 //# sourceMappingURL=index.js.map

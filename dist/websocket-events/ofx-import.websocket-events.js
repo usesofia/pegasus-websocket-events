@@ -90,15 +90,14 @@ class FinishedEventDataEntity extends zod_class_1.Z.class(FinishedSchema.shape) 
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_FAILED:
                 return `Do arquivo "${this.ofxFileName}", todas as ${this.nTotalItems} transações previstas falharam ao importar.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED:
-                return `Do arquivo "${this.ofxFileName}", ${this.nSuccessItems} de ${this.nTotalItems} transações previstas foram importadas com sucesso.`;
+                return `Do arquivo "${this.ofxFileName}", ${this.nSuccessItems} das ${this.nTotalItems} transações previstas foram importadas com sucesso.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED:
-                return `Do arquivo "${this.ofxFileName}", ${this.nFailedItems} de ${this.nTotalItems} transações previstas falharam ao importar.`;
+                return `Do arquivo "${this.ofxFileName}", ${this.nFailedItems} das ${this.nTotalItems} transações previstas falharam ao importar.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-                return `Do arquivo "${this.ofxFileName}", ${this.nSuccessItems} transações foram importadas com sucesso e ${this.nFailedItems} falharam, de um total de ${this.nTotalItems} previstas.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-                return `Do arquivo "${this.ofxFileName}", ${this.nSuccessItems} transações foram importadas com sucesso e ${this.nFailedItems} falharam, de um total de ${this.nTotalItems} previstas.`;
+                return `Do arquivo "${this.ofxFileName}", ${this.nSuccessItems} transações foram importadas com sucesso e ${this.nFailedItems} falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.NO_ITEMS_PROCESSED:
-                return `Nenhuma transação do arquivo "${this.ofxFileName}" foi processada.`;
+                return `Nenhuma transação do arquivo "${this.ofxFileName}" foi importada.`;
         }
     }
     static build(input) {

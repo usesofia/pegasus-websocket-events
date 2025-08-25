@@ -11,15 +11,15 @@ declare const StartedSchema: z.ZodObject<{
     resource: z.ZodNativeEnum<typeof Resource>;
     fileType: z.ZodNativeEnum<typeof FileType>;
 }, "strip", z.ZodTypeAny, {
-    nTotalItems: number;
     jobRequestId: string;
     fileType: FileType;
+    nTotalItems: number;
     resource: Resource;
     jobExecutionId: string;
 }, {
-    nTotalItems: number;
     jobRequestId: string;
     fileType: FileType;
+    nTotalItems: number;
     resource: Resource;
     jobExecutionId: string;
 }>;
@@ -46,21 +46,21 @@ declare const ProgressSchema: z.ZodObject<{
     nFailedItems: z.ZodNumber;
     progress: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    nTotalItems: number;
-    nSuccessItems: number;
-    nFailedItems: number;
     jobRequestId: string;
     fileType: FileType;
+    nTotalItems: number;
     resource: Resource;
+    nSuccessItems: number;
+    nFailedItems: number;
     progress: number;
     jobExecutionId: string;
 }, {
-    nTotalItems: number;
-    nSuccessItems: number;
-    nFailedItems: number;
     jobRequestId: string;
     fileType: FileType;
+    nTotalItems: number;
     resource: Resource;
+    nSuccessItems: number;
+    nFailedItems: number;
     progress: number;
     jobExecutionId: string;
 }>;
@@ -93,24 +93,24 @@ declare const FinishedSchema: z.ZodObject<{
     resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
     signedUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
-    nTotalItems: number;
-    nSuccessItems: number;
-    nFailedItems: number;
     jobRequestId: string;
     fileType: FileType;
+    nTotalItems: number;
     resource: Resource;
+    nSuccessItems: number;
+    nFailedItems: number;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
     jobExecutionId: string;
     signedUrl?: string | null | undefined;
 }, {
-    nTotalItems: number;
-    nSuccessItems: number;
-    nFailedItems: number;
     jobRequestId: string;
     fileType: FileType;
+    nTotalItems: number;
     resource: Resource;
+    nSuccessItems: number;
+    nFailedItems: number;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
@@ -146,15 +146,15 @@ export declare const ExportRecordsWebsocketEvents: {
             resource: z.ZodNativeEnum<typeof Resource>;
             fileType: z.ZodNativeEnum<typeof FileType>;
         }, "strip", z.ZodTypeAny, {
-            nTotalItems: number;
             jobRequestId: string;
             fileType: FileType;
+            nTotalItems: number;
             resource: Resource;
             jobExecutionId: string;
         }, {
-            nTotalItems: number;
             jobRequestId: string;
             fileType: FileType;
+            nTotalItems: number;
             resource: Resource;
             jobExecutionId: string;
         }>;
@@ -172,21 +172,21 @@ export declare const ExportRecordsWebsocketEvents: {
             nFailedItems: z.ZodNumber;
             progress: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
-            nTotalItems: number;
-            nSuccessItems: number;
-            nFailedItems: number;
             jobRequestId: string;
             fileType: FileType;
+            nTotalItems: number;
             resource: Resource;
+            nSuccessItems: number;
+            nFailedItems: number;
             progress: number;
             jobExecutionId: string;
         }, {
-            nTotalItems: number;
-            nSuccessItems: number;
-            nFailedItems: number;
             jobRequestId: string;
             fileType: FileType;
+            nTotalItems: number;
             resource: Resource;
+            nSuccessItems: number;
+            nFailedItems: number;
             progress: number;
             jobExecutionId: string;
         }>;
@@ -207,24 +207,24 @@ export declare const ExportRecordsWebsocketEvents: {
             resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
             signedUrl: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         }, "strip", z.ZodTypeAny, {
-            nTotalItems: number;
-            nSuccessItems: number;
-            nFailedItems: number;
             jobRequestId: string;
             fileType: FileType;
+            nTotalItems: number;
             resource: Resource;
+            nSuccessItems: number;
+            nFailedItems: number;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
             jobExecutionId: string;
             signedUrl?: string | null | undefined;
         }, {
-            nTotalItems: number;
-            nSuccessItems: number;
-            nFailedItems: number;
             jobRequestId: string;
             fileType: FileType;
+            nTotalItems: number;
             resource: Resource;
+            nSuccessItems: number;
+            nFailedItems: number;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;

@@ -84,17 +84,17 @@ class FinishedEventDataEntity extends zod_class_1.Z.class(FinishedSchema.shape) 
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.EMPTY:
                 return `Nenhum registro foi removido.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED:
-                return `Dos ${this.nTotalItems} previstos, todos foram removidos com sucesso.`;
+                return `Dos ${this.nTotalItems} registros previstos, todos foram removidos com sucesso.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_FAILED:
-                return `Dos ${this.nTotalItems} previstos, todas as remoções falharam.`;
+                return `Dos ${this.nTotalItems} registros previstos, todas as remoções falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED:
-                return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram removidos com sucesso.`;
+                return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram removidos com sucesso.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED:
-                return `Dos ${this.nTotalItems} previstos, ${this.nFailedItems} remoções falharam.`;
+                return `Dos ${this.nTotalItems} registros previstos, ${this.nFailedItems} remoções falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-                return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram removidos com sucesso e ${this.nFailedItems} falharam.`;
+                return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram removidos com sucesso e ${this.nFailedItems} falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-                return `Dos ${this.nTotalItems} previstos, ${this.nSuccessItems} foram removidos com sucesso e ${this.nFailedItems} falharam.`;
+                return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram removidos com sucesso e ${this.nFailedItems} falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.NO_ITEMS_PROCESSED:
                 return `Nenhum registro foi processado para remoção.`;
         }

@@ -9,13 +9,13 @@ declare const StartedSchema: z.ZodObject<{
     nTotalItems: z.ZodNumber;
     resource: z.ZodNativeEnum<typeof Resource>;
 }, "strip", z.ZodTypeAny, {
-    nTotalItems: number;
     jobRequestId: string;
+    nTotalItems: number;
     resource: Resource;
     jobExecutionId: string;
 }, {
-    nTotalItems: number;
     jobRequestId: string;
+    nTotalItems: number;
     resource: Resource;
     jobExecutionId: string;
 }>;
@@ -40,19 +40,19 @@ declare const ProgressSchema: z.ZodObject<{
     nFailedItems: z.ZodNumber;
     progress: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
+    jobRequestId: string;
     nTotalItems: number;
+    resource: Resource;
     nSuccessItems: number;
     nFailedItems: number;
-    jobRequestId: string;
-    resource: Resource;
     progress: number;
     jobExecutionId: string;
 }, {
+    jobRequestId: string;
     nTotalItems: number;
+    resource: Resource;
     nSuccessItems: number;
     nFailedItems: number;
-    jobRequestId: string;
-    resource: Resource;
     progress: number;
     jobExecutionId: string;
 }>;
@@ -82,21 +82,21 @@ declare const FinishedSchema: z.ZodObject<{
     finishedAt: z.ZodDate;
     resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
 }, "strip", z.ZodTypeAny, {
+    jobRequestId: string;
     nTotalItems: number;
+    resource: Resource;
     nSuccessItems: number;
     nFailedItems: number;
-    jobRequestId: string;
-    resource: Resource;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
     jobExecutionId: string;
 }, {
+    jobRequestId: string;
     nTotalItems: number;
+    resource: Resource;
     nSuccessItems: number;
     nFailedItems: number;
-    jobRequestId: string;
-    resource: Resource;
     progress: number;
     finishedAt: Date;
     resultStatus: BulkAsyncJobExecutionResultStatus;
@@ -128,13 +128,13 @@ export declare const BulkCreateWebsocketEvents: {
             nTotalItems: z.ZodNumber;
             resource: z.ZodNativeEnum<typeof Resource>;
         }, "strip", z.ZodTypeAny, {
-            nTotalItems: number;
             jobRequestId: string;
+            nTotalItems: number;
             resource: Resource;
             jobExecutionId: string;
         }, {
-            nTotalItems: number;
             jobRequestId: string;
+            nTotalItems: number;
             resource: Resource;
             jobExecutionId: string;
         }>;
@@ -151,19 +151,19 @@ export declare const BulkCreateWebsocketEvents: {
             nFailedItems: z.ZodNumber;
             progress: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
+            jobRequestId: string;
             nTotalItems: number;
+            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
-            jobRequestId: string;
-            resource: Resource;
             progress: number;
             jobExecutionId: string;
         }, {
+            jobRequestId: string;
             nTotalItems: number;
+            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
-            jobRequestId: string;
-            resource: Resource;
             progress: number;
             jobExecutionId: string;
         }>;
@@ -182,21 +182,21 @@ export declare const BulkCreateWebsocketEvents: {
             finishedAt: z.ZodDate;
             resultStatus: z.ZodNativeEnum<typeof BulkAsyncJobExecutionResultStatus>;
         }, "strip", z.ZodTypeAny, {
+            jobRequestId: string;
             nTotalItems: number;
+            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
-            jobRequestId: string;
-            resource: Resource;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;
             jobExecutionId: string;
         }, {
+            jobRequestId: string;
             nTotalItems: number;
+            resource: Resource;
             nSuccessItems: number;
             nFailedItems: number;
-            jobRequestId: string;
-            resource: Resource;
             progress: number;
             finishedAt: Date;
             resultStatus: BulkAsyncJobExecutionResultStatus;

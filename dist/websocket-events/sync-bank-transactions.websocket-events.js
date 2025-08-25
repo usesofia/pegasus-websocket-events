@@ -86,17 +86,15 @@ class FinishedEventDataEntity extends zod_class_1.Z.class(FinishedSchema.shape) 
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.EMPTY:
                 return `Nenhuma transação bancária foi sincronizada.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED:
-                return `Das ${this.nTotalItems} previstas, todas foram sincronizadas com sucesso.`;
+                return `Das ${this.nTotalItems} transações bancárias previstas, todas foram sincronizadas com sucesso.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_FAILED:
-                return `Das ${this.nTotalItems} previstas, todas falharam.`;
+                return `Das ${this.nTotalItems} transações bancárias previstas, todas falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED:
-                return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso.`;
+                return `Das ${this.nTotalItems} transações bancárias previstas, ${this.nSuccessItems} foram sincronizadas com sucesso.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED:
-                return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso e ${this.nFailedItems} falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-                return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso e ${this.nFailedItems} falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-                return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso e ${this.nFailedItems} falharam.`;
+                return `Das ${this.nTotalItems} transações bancárias previstas, ${this.nSuccessItems} foram sincronizadas com sucesso e ${this.nFailedItems} falharam.`;
             case bulk_async_job_result_status_enum_1.BulkAsyncJobExecutionResultStatus.NO_ITEMS_PROCESSED:
                 return `Nenhuma transação bancária foi sincronizada.`;
         }
