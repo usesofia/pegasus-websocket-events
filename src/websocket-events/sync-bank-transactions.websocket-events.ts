@@ -115,17 +115,15 @@ class FinishedEventDataEntity
       case BulkAsyncJobExecutionResultStatus.EMPTY:
         return `Nenhuma transação bancária foi sincronizada.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED:
-        return `Das ${this.nTotalItems} previstas, todas foram sincronizadas com sucesso.`;
+        return `Das ${this.nTotalItems} transações bancárias previstas, todas foram sincronizadas com sucesso.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_FAILED:
-        return `Das ${this.nTotalItems} previstas, todas falharam.`;
+        return `Das ${this.nTotalItems} transações bancárias previstas, todas falharam.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED:
-        return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso.`;
+        return `Das ${this.nTotalItems} transações bancárias previstas, ${this.nSuccessItems} foram sincronizadas com sucesso.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED:
-        return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso e ${this.nFailedItems} falharam.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-        return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso e ${this.nFailedItems} falharam.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-        return `Das ${this.nTotalItems} previstas, ${this.nSuccessItems} foram sincronizadas com sucesso e ${this.nFailedItems} falharam.`;
+        return `Das ${this.nTotalItems} transações bancárias previstas, ${this.nSuccessItems} foram sincronizadas com sucesso e ${this.nFailedItems} falharam.`;
       case BulkAsyncJobExecutionResultStatus.NO_ITEMS_PROCESSED:
         return `Nenhuma transação bancária foi sincronizada.`;
     }

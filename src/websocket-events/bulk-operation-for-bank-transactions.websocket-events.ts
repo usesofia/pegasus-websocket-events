@@ -2,22 +2,20 @@ import {
   BulkAsyncJobExecutionResultStatus,
   mapBulkAsyncJobExecutionResultStatusToToastType,
 } from "@app/enums/bulk-async-job-result-status.enum";
+import { BulkBankTransactionsOperation, mapBulkBankTransactionsOperationToName } from "@app/enums/bulk-bank-transactions-operation.enum";
 import {
   WebsocketEventToastType,
   WebsocketEventTostablePort,
 } from "@app/websocket-events/tostable.port";
 import { z } from "zod";
 import { Z } from "zod-class";
-import { FileType, mapFileTypeToName } from "../enums/file-type.enum";
-import { Resource, mapResourceToName } from "../enums/resource.enum";
 
 // Started
 const StartedSchema = z.object({
   jobRequestId: z.string(),
   jobExecutionId: z.string(),
   nTotalItems: z.number(),
-  resource: z.nativeEnum(Resource),
-  fileType: z.nativeEnum(FileType),
+  operation: z.nativeEnum(BulkBankTransactionsOperation),
 });
 
 class StartedEventDataEntity
@@ -27,9 +25,9 @@ class StartedEventDataEntity
   getType(): WebsocketEventToastType {
     return WebsocketEventToastType.default;
   }
-
+  
   getTitle(attempt: number): string {
-    let title = `A exportação de "${mapResourceToName(this.resource)}" para um arquivo ${mapFileTypeToName(this.fileType)} foi iniciada...`;
+    let title = `A operação em massa de "${mapBulkBankTransactionsOperationToName(this.operation)}" as transações bancárias foi iniciada...`;
     if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
@@ -37,7 +35,7 @@ class StartedEventDataEntity
   }
 
   getDescription(): string | undefined {
-    return `Serão exportados ${this.nTotalItems} registros para um arquivo ${this.fileType}.`;
+    return `Serão processadas ${this.nTotalItems} transações bancárias.`;
   }
 
   static build(input: z.infer<typeof StartedSchema>) {
@@ -50,8 +48,7 @@ const ProgressSchema = z.object({
   jobRequestId: z.string(),
   jobExecutionId: z.string(),
   nTotalItems: z.number(),
-  resource: z.nativeEnum(Resource),
-  fileType: z.nativeEnum(FileType),
+  operation: z.nativeEnum(BulkBankTransactionsOperation),
   nSuccessItems: z.number(),
   nFailedItems: z.number(),
   progress: z.number(),
@@ -66,7 +63,7 @@ class ProgressEventDataEntity
   }
 
   getTitle(attempt: number): string {
-    let title = `A exportação de "${mapResourceToName(this.resource)}" para um arquivo ${mapFileTypeToName(this.fileType)} está em progresso...`;
+    let title = `A operação em massa de "${mapBulkBankTransactionsOperationToName(this.operation)}" as transações bancárias está em progresso...`;
     if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
@@ -87,14 +84,12 @@ const FinishedSchema = z.object({
   jobRequestId: z.string(),
   jobExecutionId: z.string(),
   nTotalItems: z.number(),
-  resource: z.nativeEnum(Resource),
-  fileType: z.nativeEnum(FileType),
+  operation: z.nativeEnum(BulkBankTransactionsOperation),
   nSuccessItems: z.number(),
   nFailedItems: z.number(),
   progress: z.number(),
   finishedAt: z.coerce.date(),
   resultStatus: z.nativeEnum(BulkAsyncJobExecutionResultStatus),
-  signedUrl: z.string().nullish(),
 });
 
 class FinishedEventDataEntity
@@ -106,7 +101,7 @@ class FinishedEventDataEntity
   }
 
   getTitle(attempt: number): string {
-    let title = `A exportação de "${mapResourceToName(this.resource)}" para um arquivo ${mapFileTypeToName(this.fileType)} foi finalizada.`;
+    let title = `A operação em massa de "${mapBulkBankTransactionsOperationToName(this.operation)}" as transações bancárias foi finalizada.`;
     if (attempt > 1) {
       title += ` (tentativa ${attempt})`;
     }
@@ -116,21 +111,21 @@ class FinishedEventDataEntity
   getDescription(): string | undefined {
     switch (this.resultStatus) {
       case BulkAsyncJobExecutionResultStatus.EMPTY:
-        return `Nenhum registro foi exportado.`;
+        return `Nenhuma transação bancária foi processada.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_SUCCESSED:
-        return `Dos ${this.nTotalItems} registros previstos, todos foram exportados com sucesso.`;
+        return `Das ${this.nTotalItems} transações bancárias previstas, todas foram processadas com sucesso.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_ALL_FAILED:
-        return `Dos ${this.nTotalItems} registros previstos, todas as exportações falharam.`;
+        return `Das ${this.nTotalItems} transações bancárias previstas, todas falharam.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_SUCCESSED:
-        return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram exportados com sucesso.`;
+        return `Das ${this.nTotalItems} transações bancárias previstas, ${this.nSuccessItems} foram processadas com sucesso.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_ALL_OF_THEM_FAILED:
-        return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
+        return `Das ${this.nTotalItems} transações bancárias previstas, ${this.nSuccessItems} foram processadas com sucesso e ${this.nFailedItems} falharam.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_ALL_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-        return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
+        return `Das ${this.nTotalItems} transações bancárias previstas, ${this.nSuccessItems} foram processadas com sucesso e ${this.nFailedItems} falharam.`;
       case BulkAsyncJobExecutionResultStatus.PROCESSED_PART_OF_THE_ITEMS_AND_SOME_SUCCESSED_AND_SOME_FAILED:
-        return `Dos ${this.nTotalItems} registros previstos, ${this.nSuccessItems} foram exportados com sucesso e ${this.nFailedItems} falharam.`;
+        return `Das ${this.nTotalItems} transações bancárias previstas, ${this.nSuccessItems} foram processadas com sucesso e ${this.nFailedItems} falharam.`;
       case BulkAsyncJobExecutionResultStatus.NO_ITEMS_PROCESSED:
-        return `Nenhum registro foi exportado.`;
+        return `Nenhuma transação bancária foi processada.`;
     }
   }
 
@@ -139,19 +134,19 @@ class FinishedEventDataEntity
   }
 }
 
-export const ExportRecordsWebsocketEvents = {
+export const BulkOperationForBankTransactionsWebsocketEvents = {
   Started: {
-    eventName: "export-records-started",
+    eventName: "bulk-operation-for-bank-transactions-started",
     EventDataSchema: StartedSchema,
     EventDataEntity: StartedEventDataEntity,
   },
   Progress: {
-    eventName: "export-records-progress",
+    eventName: "bulk-operation-for-bank-transactions-progress",
     EventDataSchema: ProgressSchema,
     EventDataEntity: ProgressEventDataEntity,
   },
   Finished: {
-    eventName: "export-records-finished",
+    eventName: "bulk-operation-for-bank-transactions-finished",
     EventDataSchema: FinishedSchema,
     EventDataEntity: FinishedEventDataEntity,
   },
