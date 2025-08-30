@@ -125,7 +125,7 @@ const FailedSchema = zod_1.z.object({
 });
 class FailedEventDataEntity extends zod_class_1.Z.class(FailedSchema.shape) {
     getType() {
-        return tostable_port_1.WebsocketEventToastType.default;
+        return tostable_port_1.WebsocketEventToastType.error;
     }
     getTitle(attempt) {
         let title = `A extração de "${(0, resource_enum_1.mapResourceToName)(this.resource)}" do arquivo "${this.fileName}" falhou`;

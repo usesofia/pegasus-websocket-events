@@ -160,7 +160,7 @@ class FailedEventDataEntity
   implements WebsocketEventTostablePort
 {
   getType(): WebsocketEventToastType {
-    return WebsocketEventToastType.default;
+    return WebsocketEventToastType.error;
   }
 
   getTitle(attempt: number): string {
